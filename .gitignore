@@ -1,10 +1,8 @@
 ### Java
-/target/
-*.class
+**/target/
+.class
 *.log
-**/mvnw
-**/mvnw.cmd
-**/.mvn
+
 
 ### STS
 .apt_generated
@@ -15,12 +13,14 @@
 .springBeans
 .sts4-cache
 
+
 ### IntelliJ IDEA
-.idea
+.idea/
 .out
 *.iws
 *.iml
 *.ipr
+
 
 ### NetBeans
 /nbproject/private/

@@ -1,0 +1,23 @@
+server:
+  port: 30000
+
+spring:
+
+  # \u670D\u52A1\u540D\u79F0
+  application:
+    name: gulimall-third-party
+
+  cloud:
+
+    # \u670D\u52A1\u6CE8\u518C
+    nacos:
+      discovery:
+        server-addr: 192.168.117.155:8848
+
+    # OSS
+    alicloud:
+      access-key: LTAI5tNX5UroFeTYGf9GjtGD
+      secret-key: rj3UWP6LiKkIUreE3hN1Q1VH5ebPkk
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: khighness-gulimall
