@@ -21,7 +21,7 @@ import top.parak.gulimall.common.utils.R;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 10:17:41
+ * @date 2021-10-16 21:10:57
  */
 @RestController
 @RequestMapping("coupon/couponhistory")

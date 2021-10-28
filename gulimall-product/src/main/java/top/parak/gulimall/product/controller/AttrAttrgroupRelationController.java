@@ -26,6 +26,7 @@ import top.parak.gulimall.common.utils.R;
 @RestController
 @RequestMapping("product/attrattrgrouprelation")
 public class AttrAttrgroupRelationController {
+
     @Autowired
     private AttrAttrgroupRelationService attrAttrgroupRelationService;
 
@@ -39,7 +40,6 @@ public class AttrAttrgroupRelationController {
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息

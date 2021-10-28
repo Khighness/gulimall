@@ -33,7 +33,7 @@ spring:
 # MybatisPlus
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
-  type-aliases-package: top.parak.gulimall.product
+  type-aliases-package: top.parak.gulimall.order.entity
   configuration:
     map-underscore-to-camel-case: true
   global-config:

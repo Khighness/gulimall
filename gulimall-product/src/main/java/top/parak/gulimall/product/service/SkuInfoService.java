@@ -16,5 +16,19 @@ import java.util.Map;
 public interface SkuInfoService extends IService<SkuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 保存SKU的基本信息
+     * @param skuInfoEntity SKU实体
+     */
+    void saveSkuInfo(SkuInfoEntity skuInfoEntity);
+
+    /**
+     * 检索SKU
+     * @param params 参数
+     * @return SKU列表
+     */
+    PageUtils queryPageByCondition(Map<String, Object> params);
+
 }
 

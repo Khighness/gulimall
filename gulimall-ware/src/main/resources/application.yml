@@ -6,6 +6,11 @@ server:
 
 spring:
 
+# Json
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
 # Datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -33,7 +38,7 @@ spring:
 # MybatisPlus
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
-  type-aliases-package: top.parak.gulimall.product
+  type-aliases-package: top.parak.gulimall.ware.entity
   configuration:
     map-underscore-to-camel-case: true
   global-config:
@@ -41,3 +46,7 @@ mybatis-plus:
     db-config:
       id-type: auto
 
+# Log
+logging:
+  level:
+    top.parak.gulimall.ware.dao: debug

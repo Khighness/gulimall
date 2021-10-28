@@ -18,8 +18,16 @@ public interface CategoryService extends IService<CategoryEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
+    /**
+     * 查询出所有分类，并且组装成父子结构
+     * @return 分类列表
+     */
     List<CategoryEntity> listWithTree();
 
+    /**
+     * 根据分类ID批量删除分类
+     * @param idList 分类ID列表
+     */
     void removeCategoryByIds(List<Long> idList);
 
     /**
@@ -28,5 +36,12 @@ public interface CategoryService extends IService<CategoryEntity> {
      * @return 路径形式 [父/子/孙]
      */
     Long[] findCatelogPath(Long catelogId);
+
+    /**
+     * 级联更新所有关联的数据
+     * @param category 分类
+     */
+    void updateCascade(CategoryEntity category);
+
 }
 

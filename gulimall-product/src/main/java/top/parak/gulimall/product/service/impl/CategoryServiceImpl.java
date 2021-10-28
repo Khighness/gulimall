@@ -1,5 +1,6 @@
 package top.parak.gulimall.product.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -8,11 +9,13 @@ import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.Query;
 
 import top.parak.gulimall.product.dao.CategoryDao;
 import top.parak.gulimall.product.entity.CategoryEntity;
+import top.parak.gulimall.product.service.CategoryBrandRelationService;
 import top.parak.gulimall.product.service.CategoryService;
 
 /**
@@ -24,6 +27,9 @@ import top.parak.gulimall.product.service.CategoryService;
  */
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    private CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -56,7 +62,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
     @Override
     public void removeCategoryByIds(List<Long> idList) {
-        // todo 检查当前删除的分类，是否被别的地方引用
+        // TODO 检查当前删除的分类，是否被别的地方引用
         baseMapper.deleteBatchIds(idList);
     }
 
@@ -87,6 +93,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         List<Long> paths = findParentPath(catelogId, new ArrayList<>());
         Collections.reverse(paths);
         return paths.toArray(new Long[0]);
+    }
+
+    @Transactional
+    @Override
+    public void updateCascade(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
     }
 
     private List<Long> findParentPath(Long catelogId, List<Long> paths) {

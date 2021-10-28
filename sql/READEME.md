@@ -1,7 +1,22 @@
 
 
+### ⚠ 注意 
 
-在数据库的 pms_attr 表加上value_type字段，类型为tinyint就行；
-在代码中，AttyEntity.java、AttrVo.java中各添加：private Integer valueType，
-在AttrDao.xml中添加：《result property="valueType" column="value_type"/》  （把尖括号换成英文的）
+- `gulimall_pms`数据库执行
+
+  ```sql
+  ADD COLUMN `value_type` tinyint(1) NULL COMMENT '值类型[0-单选，1-多选]' AFTER `search_type`;
+  ```
+
+- `AttyEntity`、`AttrVo`中各添加：
+  
+  ```java
+  private Integer valueType;
+  ```
+
+- `AttrDao.xml中`添加：
+
+  ```xml
+  <result property="valueType" column="value_type"/>
+  ```
 

@@ -17,7 +17,7 @@ import top.parak.gulimall.coupon.service.MemberPriceService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 10:17:41
+ * @date 2021-10-16 21:10:57
  */
 @Service("memberPriceService")
 public class MemberPriceServiceImpl extends ServiceImpl<MemberPriceDao, MemberPriceEntity> implements MemberPriceService {

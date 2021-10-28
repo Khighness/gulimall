@@ -3,10 +3,7 @@ package top.parak.gulimall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,28 +21,13 @@ import top.parak.gulimall.common.utils.R;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 10:17:41
+ * @date 2021-10-16 21:10:57
  */
-@RefreshScope // 动态刷新
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {
     @Autowired
     private CouponService couponService;
-
-    @Value("${coupon.user.name}")
-    private String couponUserName;
-
-    @Value("${coupon.user.age}")
-    private Integer couponUserAge;
-
-    /**
-     * 测试Config
-     */
-    @RequestMapping("/test")
-    public R test() {
-        return R.ok().put("name", couponUserName).put("age", couponUserAge);
-    }
 
     /**
      * 测试openfeign
@@ -67,6 +49,7 @@ public class CouponController {
 
         return R.ok().put("page", page);
     }
+
 
     /**
      * 信息

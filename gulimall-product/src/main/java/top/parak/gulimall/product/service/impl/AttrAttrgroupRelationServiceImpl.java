@@ -1,16 +1,23 @@
 package top.parak.gulimall.product.service.impl;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.Query;
 
 import top.parak.gulimall.product.dao.AttrAttrgroupRelationDao;
 import top.parak.gulimall.product.entity.AttrAttrgroupRelationEntity;
 import top.parak.gulimall.product.service.AttrAttrgroupRelationService;
+import top.parak.gulimall.product.vo.AttrGroupRelationVo;
 
 /**
  * 属性&属性分组关联
@@ -30,6 +37,17 @@ public class AttrAttrgroupRelationServiceImpl extends ServiceImpl<AttrAttrgroupR
         );
 
         return new PageUtils(page);
+    }
+
+    @Transactional
+    @Override
+    public void savBatch(List<AttrGroupRelationVo> vos) {
+        List<AttrAttrgroupRelationEntity> attrAttrgroupRelationEntities = vos.stream().map(item -> {
+            AttrAttrgroupRelationEntity relationEntity = new AttrAttrgroupRelationEntity();
+            BeanUtils.copyProperties(item, relationEntity);
+            return relationEntity;
+        }).collect(Collectors.toList());
+        this.saveBatch(attrAttrgroupRelationEntities);
     }
 
 }
