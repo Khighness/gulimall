@@ -5,7 +5,7 @@ package top.parak.gulimall.common.utils;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2020-2-22 22:01:55
+ * @date 2021-09-21 22:01:55
  */
 public class Constant {
 	/**

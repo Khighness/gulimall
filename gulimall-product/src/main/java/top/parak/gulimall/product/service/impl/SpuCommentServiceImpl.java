@@ -17,7 +17,7 @@ import top.parak.gulimall.product.service.SpuCommentService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @Service("spuCommentService")
 public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentDao, SpuCommentEntity> implements SpuCommentService {

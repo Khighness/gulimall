@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2020-2-22 22:05:03
+ * @date 2021-09-21 22:05:03
  */
 public class SQLFilter {
 
@@ -34,7 +34,7 @@ public class SQLFilter {
 
         //判断是否包含非法字符
         for(String keyword : keywords){
-            if(str.indexOf(keyword) != -1){
+            if(str.contains(keyword)){
                 throw new GuliException("包含非法字符");
             }
         }

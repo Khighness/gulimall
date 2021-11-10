@@ -22,13 +22,23 @@ import top.parak.gulimall.product.vo.SpuSaveVo;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @RestController
 @RequestMapping("product/spuinfo")
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
+
+    /**
+     * 上架
+     */
+    @RequestMapping("/{spuId}/up")
+    public R supUp(@PathVariable("spuId") Long spuId){
+        spuInfoService.up(spuId);
+
+        return R.ok();
+    }
 
     /**
      * 列表

@@ -27,7 +27,7 @@ import top.parak.gulimall.product.vo.AttrGroupWithAttrsVo;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @Service("attrGroupService")
 public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEntity> implements AttrGroupService {

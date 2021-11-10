@@ -5,7 +5,7 @@ package top.parak.gulimall.common.exception;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2020-2-22 20:29:11
+ * @date 2021-09-21 20:29:11
  */
 public class GuliException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

@@ -35,7 +35,7 @@ import top.parak.gulimall.product.vo.AttrVo;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @Service("attrService")
 public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements AttrService {
@@ -256,6 +256,11 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), queryWrapper);
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<Long> selectSearchAttrIds(List<Long> attrIds) {
+        return this.baseMapper.selectSearchAttrIds(attrIds);
     }
 
 }

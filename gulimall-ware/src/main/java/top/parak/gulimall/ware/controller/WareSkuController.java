@@ -1,19 +1,17 @@
 package top.parak.gulimall.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import top.parak.gulimall.ware.entity.WareSkuEntity;
 import top.parak.gulimall.ware.service.WareSkuService;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.R;
+import top.parak.gulimall.common.to.SkuHasStockVo;
 
 
 /**
@@ -21,13 +19,24 @@ import top.parak.gulimall.common.utils.R;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 11:26:12
+ * @date 2021-09-25 11:26:12
  */
 @RestController
 @RequestMapping("ware/waresku")
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    /**
+     * 查询sku是否有库存
+     */
+    @PostMapping("/hasStock")
+    public R getSkusHasStock(@RequestBody List<Long> skuIds) {
+        // sku_id stock
+        List<SkuHasStockVo> vos = wareSkuService.getSkusHasStock(skuIds);
+
+        return R.ok().setData(vos);
+    }
 
     /**
      * 列表

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -18,13 +20,14 @@ import top.parak.gulimall.ware.dao.WareSkuDao;
 import top.parak.gulimall.ware.entity.WareSkuEntity;
 import top.parak.gulimall.ware.feign.ProductFeignService;
 import top.parak.gulimall.ware.service.WareSkuService;
+import top.parak.gulimall.common.to.SkuHasStockVo;
 
 /**
  * 商品库存
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 11:26:12
+ * @date 2021-09-25 11:26:12
  */
 @Service("wareSkuService")
 public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> implements WareSkuService {
@@ -92,6 +95,20 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
         } else {
             wareSkuDao.addStock(skuId, wareId, skuNum);
         }
+    }
+
+    @Override
+    public List<SkuHasStockVo> getSkusHasStock(List<Long> skuIds) {
+        List<SkuHasStockVo> vos = skuIds.stream().map(skuId -> {
+            Long count = this.baseMapper.getSkuStock(skuId);
+
+            SkuHasStockVo vo = new SkuHasStockVo();
+            vo.setSkuId(skuId);
+            vo.setHasStock(count != null && count > 0);
+            return vo;
+        }).collect(Collectors.toList());
+
+        return vos;
     }
 
 }

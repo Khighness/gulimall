@@ -12,7 +12,7 @@ import lombok.Data;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @Data
 @TableName("pms_category_brand_relation")
@@ -20,7 +20,7 @@ public class CategoryBrandRelationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 *
 	 */
 	@TableId
 	private Long id;
@@ -33,11 +33,11 @@ public class CategoryBrandRelationEntity implements Serializable {
 	 */
 	private Long catelogId;
 	/**
-	 * 
+	 *
 	 */
 	private String brandName;
 	/**
-	 * 
+	 *
 	 */
 	private String catelogName;
 

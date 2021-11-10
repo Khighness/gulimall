@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2020-2-22 21:58:33
+ * @date 2021-09-21 21:58:33
  */
 public class Query<T> {
 

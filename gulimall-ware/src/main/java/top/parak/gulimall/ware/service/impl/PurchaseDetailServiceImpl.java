@@ -22,7 +22,7 @@ import javax.crypto.KeyAgreement;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 11:26:12
+ * @date 2021-09-25 11:26:12
  */
 @Service("purchaseDetailService")
 public class PurchaseDetailServiceImpl extends ServiceImpl<PurchaseDetailDao, PurchaseDetailEntity> implements PurchaseDetailService {

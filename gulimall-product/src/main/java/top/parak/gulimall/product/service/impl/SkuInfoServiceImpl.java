@@ -3,6 +3,7 @@ package top.parak.gulimall.product.service.impl;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -20,7 +21,7 @@ import top.parak.gulimall.product.service.SkuInfoService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @Service("skuInfoService")
 public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> implements SkuInfoService {
@@ -78,6 +79,16 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<SkuInfoEntity> getSkusBySpuId(Long spuId) {
+        List<SkuInfoEntity> list = this.list(
+                new QueryWrapper<SkuInfoEntity>()
+                .eq("spu_id", spuId)
+        );
+
+        return list;
     }
 
 }

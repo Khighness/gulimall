@@ -13,7 +13,7 @@ import lombok.Data;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 @Data
 @TableName("pms_spu_info")
@@ -42,7 +42,7 @@ public class SpuInfoEntity implements Serializable {
 	 */
 	private Long brandId;
 	/**
-	 * 
+	 *
 	 */
 	private BigDecimal weight;
 	/**
@@ -50,11 +50,11 @@ public class SpuInfoEntity implements Serializable {
 	 */
 	private Integer publishStatus;
 	/**
-	 * 
+	 *
 	 */
 	private Date createTime;
 	/**
-	 * 
+	 *
 	 */
 	private Date updateTime;
 

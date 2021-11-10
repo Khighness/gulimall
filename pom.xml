@@ -28,6 +28,7 @@
         <module>renren-fast</module>
         <module>renren-generator</module>
         <module>khighness-gateway</module>
+        <module>gulimall-search</module>
     </modules>
 
 </project>

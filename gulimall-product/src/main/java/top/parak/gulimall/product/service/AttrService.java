@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-24 21:59:22
+ * @date 2021-09-24 21:59:22
  */
 public interface AttrService extends IService<AttrEntity> {
 
@@ -70,6 +70,13 @@ public interface AttrService extends IService<AttrEntity> {
      * @return 未关联的属性列表
      */
     PageUtils getNoRelationAttr(Map<String, Object> params, Long attrGroupId);
+
+    /**
+     * 在指定的所有属性集合中，挑出检索属性
+     * @param attrIds 属性ID集合
+     * @return 检索属性ID
+     */
+    List<Long> selectSearchAttrIds(List<Long> attrIds);
 
 }
 

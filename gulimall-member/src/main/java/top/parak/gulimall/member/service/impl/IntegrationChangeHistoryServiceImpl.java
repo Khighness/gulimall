@@ -17,7 +17,7 @@ import top.parak.gulimall.member.service.IntegrationChangeHistoryService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 10:41:26
+ * @date 2021-09-25 10:41:26
  */
 @Service("integrationChangeHistoryService")
 public class IntegrationChangeHistoryServiceImpl extends ServiceImpl<IntegrationChangeHistoryDao, IntegrationChangeHistoryEntity> implements IntegrationChangeHistoryService {

@@ -9,7 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *
  * @author KHighness
  * @email parakovo@gmial.com
- * @date 2021-02-27 00:26:45
+ * @date 2021-09-27 00:26:45
  */
 @SpringBootApplication
 @EnableDiscoveryClient

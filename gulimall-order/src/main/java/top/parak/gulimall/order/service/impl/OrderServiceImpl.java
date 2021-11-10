@@ -17,7 +17,7 @@ import top.parak.gulimall.order.service.OrderService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 11:21:34
+ * @date 2021-09-25 11:21:34
  */
 @Service("orderService")
 public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> implements OrderService {

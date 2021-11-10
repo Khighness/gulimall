@@ -17,7 +17,7 @@ import top.parak.gulimall.member.service.MemberCollectSubjectService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-02-25 10:41:26
+ * @date 2021-09-25 10:41:26
  */
 @Service("memberCollectSubjectService")
 public class MemberCollectSubjectServiceImpl extends ServiceImpl<MemberCollectSubjectDao, MemberCollectSubjectEntity> implements MemberCollectSubjectService {
