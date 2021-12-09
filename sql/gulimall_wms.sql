@@ -1,15 +1,15 @@
 /*
  Navicat Premium Data Transfer
 
- Target Server Type    : MySQL
- Target Server Version : 50729
- File Encoding         : 65001
-
  Source Server         : cen-k
  Source Server Type    : MySQL
  Source Server Version : 80020
  Source Host           : 192.168.117.155:3306
- Source Schema         : gulimall_oms
+ Source Schema         : gulimall_wms
+
+ Target Server Type    : MySQL
+ Target Server Version : 50729
+ File Encoding         : 65001
 */
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`gulimall_wms` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 

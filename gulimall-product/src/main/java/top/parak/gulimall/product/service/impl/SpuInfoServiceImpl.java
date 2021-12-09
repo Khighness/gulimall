@@ -236,7 +236,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     }
 
     /**
-     * Feign的调用流程
+     * <b>Feign的调用流程</b>
      * <ul>
      * <li> 构造请求数据，将对象转为json
      * <pre> {@code

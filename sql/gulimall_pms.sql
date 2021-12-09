@@ -1,11 +1,11 @@
 /*
  Navicat Premium Data Transfer
 
-  Source Server         : cen-k
+ Source Server         : cen-k
  Source Server Type    : MySQL
  Source Server Version : 80020
  Source Host           : 192.168.117.155:3306
- Source Schema         : gulimall_oms
+ Source Schema         : gulimall_pms
 
  Target Server Type    : MySQL
  Target Server Version : 50729
