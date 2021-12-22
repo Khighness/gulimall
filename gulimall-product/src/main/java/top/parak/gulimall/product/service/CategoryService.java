@@ -3,6 +3,7 @@ package top.parak.gulimall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.product.entity.CategoryEntity;
+import top.parak.gulimall.product.vo.Catelog2Vo;
 
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,37 @@ public interface CategoryService extends IService<CategoryEntity> {
      * @param category 分类
      */
     void updateCascade(CategoryEntity category);
+
+    /**
+     * 查询所有的一级分类
+     * @return 一级分类列表
+     */
+    List<CategoryEntity> getLevel1Categories();
+
+    /**
+     * 查询所有分类封装成指定格式
+     * @return 首页分类数据 MAP(key: 一级菜单ID, value: 二级菜单列表)
+     */
+    Map<String, List<Catelog2Vo>> getCatalogJson();
+
+    /**
+     * 通过Redis-SETNX分布式锁实现
+     * @deprecated
+     * @return 首页分类数据 MAP(key: 一级菜单ID, value: 二级菜单列表)
+     */
+    Map<String, List<Catelog2Vo>> getCatalogJsonDbWithRedisLock();
+
+    /**
+     * 通过redisson分布式锁实现
+     * @return 首页分类数据 MAP(key: 一级菜单ID, value: 二级菜单列表)
+     */
+    Map<String, List<Catelog2Vo>> getCatalogJsonDbWithRedisson();
+
+    /**
+     * 通过Redis-SpringCache实现
+     * @return 首页分类数据 MAP(key: 一级菜单ID, value: 二级菜单列表)
+     */
+    Map<String, List<Catelog2Vo>> getCatalogJsonDbWithSpringCache();
 
 }
 

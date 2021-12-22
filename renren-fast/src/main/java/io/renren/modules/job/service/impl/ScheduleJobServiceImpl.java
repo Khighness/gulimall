@@ -32,7 +32,7 @@ import java.util.*;
 public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobDao, ScheduleJobEntity> implements ScheduleJobService {
 	@Autowired
     private Scheduler scheduler;
-	
+
 	/**
 	 * 项目启动时，初始化定时器
 	 */
@@ -69,40 +69,40 @@ public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobDao, Schedule
 		scheduleJob.setCreateTime(new Date());
 		scheduleJob.setStatus(Constant.ScheduleStatus.NORMAL.getValue());
         this.save(scheduleJob);
-        
+
         ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
     }
-	
+
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void update(ScheduleJobEntity scheduleJob) {
         ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
-                
+
         this.updateById(scheduleJob);
     }
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-    public void deleteBatch(Long[] jobIds) {
+    public void deleteBatch(List<Long> jobIds) {
     	for(Long jobId : jobIds){
     		ScheduleUtils.deleteScheduleJob(scheduler, jobId);
     	}
-    	
+
     	//删除数据
-    	this.removeByIds(Arrays.asList(jobIds));
+    	this.removeByIds(jobIds);
 	}
 
 	@Override
-    public int updateBatch(Long[] jobIds, int status){
+    public int updateBatch(List<Long> jobIds, int status){
     	Map<String, Object> map = new HashMap<>(2);
     	map.put("list", jobIds);
     	map.put("status", status);
     	return baseMapper.updateBatch(map);
     }
-    
+
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-    public void run(Long[] jobIds) {
+    public void run(List<Long> jobIds) {
     	for(Long jobId : jobIds){
     		ScheduleUtils.run(scheduler, this.getById(jobId));
     	}
@@ -110,22 +110,22 @@ public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobDao, Schedule
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-    public void pause(Long[] jobIds) {
+    public void pause(List<Long> jobIds) {
         for(Long jobId : jobIds){
     		ScheduleUtils.pauseJob(scheduler, jobId);
     	}
-        
+
     	updateBatch(jobIds, Constant.ScheduleStatus.PAUSE.getValue());
     }
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-    public void resume(Long[] jobIds) {
+    public void resume(List<Long> jobIds) {
     	for(Long jobId : jobIds){
     		ScheduleUtils.resumeJob(scheduler, jobId);
     	}
 
     	updateBatch(jobIds, Constant.ScheduleStatus.NORMAL.getValue());
     }
-    
+
 }

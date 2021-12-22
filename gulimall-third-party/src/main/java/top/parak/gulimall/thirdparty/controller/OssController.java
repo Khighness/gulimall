@@ -4,6 +4,7 @@ import com.aliyun.oss.OSS;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ import java.util.Map;
  * @author KHighness
  * @since 2021-10-12
  */
+@Slf4j
 @RestController
 public class OssController {
 
@@ -70,8 +72,7 @@ public class OssController {
             respMap.put("expire", String.valueOf(expireEndTime / 1000));
             // respMap.put("expire", formatISO8601Date(expiration));
         } catch (Exception e) {
-            // Assert.fail(e.getMessage());
-            System.out.println(e.getMessage());
+            log.error("获取阿里云OSS信息异常: {}", e.getMessage(), e);
         } finally {
             ossClient.shutdown();
         }

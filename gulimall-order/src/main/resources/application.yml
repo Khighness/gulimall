@@ -6,6 +6,14 @@ server:
 
 spring:
 
+# Nacos
+  application:
+    name: gulimall-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.117.155:8848
+
 # Datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,14 +29,6 @@ spring:
       min-evictable-idle-time-millis: 300000
       max-evictable-idle-time-millis: 900000
       validation-query: SELECT 1 FROM DUAL
-
-# Nacos
-  application:
-    name: gulimall-order
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 192.168.117.155:8848
 
 # MybatisPlus
 mybatis-plus:

@@ -91,7 +91,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     }
 
     /**
-     * TODO 高级部分，优化
+     * TODO: 高级部分，优化
      */
     @Transactional
     @Override
@@ -171,7 +171,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                 }).filter(img -> !StringUtils.isEmpty(img.getImgUrl())
                 ).collect(Collectors.toList());
                 skuImagesService.saveBatch(skuImagesEntities);
-                //TODO 没有图片路径的无需保存
+                //TODO: 没有图片路径的无需保存
 
                 // 6.3  SKU的销售属性    `pms_sku_sale_attr_values`
                 List<Attr> attr = sku.getAttr();
@@ -237,7 +237,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     /**
      * <b>Feign的调用流程</b>
-     * <ul>
+     * <ol>
      * <li> 构造请求数据，将对象转为json
      * <pre> {@code
      *     RequestTemplate template = buildTemplateFromArgs.create(argv);
@@ -262,7 +262,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
      *         }
      *     }
      * } </pre>
-     * </ul>
+     * </ol>
      */
     @Override
     public void up(Long spuId) {
@@ -338,7 +338,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             this.baseMapper.updateSpuStatus(spuId, ProductConstant.StatusEnum.SPU_UP.getCode());
         } else {
             // 远程调用失败
-            // TODO 重复调用，接口幂等性
+            // TODO: 重复调用，接口幂等性
 
         }
     }

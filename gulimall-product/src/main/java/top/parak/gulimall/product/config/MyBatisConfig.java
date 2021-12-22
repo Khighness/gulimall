@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author KHighness
  * @since 2021-10-14
+ * @apiNote MyBatis配置
  */
 @Configuration
 @MapperScan("top.parak.gulimall.product.dao")

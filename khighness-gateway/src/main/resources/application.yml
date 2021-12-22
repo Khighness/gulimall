@@ -1,24 +1,21 @@
 spring:
 
-  # 服务名称
+# Nacos
   application:
     name: gulimall-gateway
-
   cloud:
-
-    # 服务注册
     nacos:
       discovery:
         server-addr: 192.168.117.155:8848
 
-    # 网关配置
+# Gateway
     gateway:
       routes:
 
         - id: product_route
           uri: lb://gulimall-product
           predicates:
-            - Path=/api/product/**
+            - Path=/api/product/**,/hello
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
@@ -49,4 +46,14 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+
+        - id: gulimall_host_route
+          uri: lb://gulimall-product
+          predicates:
+            - Host=gulimall.com, item.gulimall.com
+
+        - id: gulimall_search_route
+          uri: lb://gulimall-search
+          predicates:
+            - Host=search.gulimall.com
 

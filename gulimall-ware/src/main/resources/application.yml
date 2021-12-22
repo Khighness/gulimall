@@ -6,6 +6,13 @@ server:
 
 spring:
 
+# Nacos
+  application:
+    name: gulimall-ware
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.117.155:8848
 # Json
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -26,14 +33,6 @@ spring:
       min-evictable-idle-time-millis: 300000
       max-evictable-idle-time-millis: 900000
       validation-query: SELECT 1 FROM DUAL
-
-# Nacos
-  application:
-    name: gulimall-ware
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 192.168.117.155:8848
 
 # MybatisPlus
 mybatis-plus:

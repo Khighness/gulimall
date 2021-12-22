@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
 import io.renren.modules.job.entity.ScheduleJobEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,34 +28,34 @@ public interface ScheduleJobService extends IService<ScheduleJobEntity> {
 	 * 保存定时任务
 	 */
 	void saveJob(ScheduleJobEntity scheduleJob);
-	
+
 	/**
 	 * 更新定时任务
 	 */
 	void update(ScheduleJobEntity scheduleJob);
-	
+
 	/**
 	 * 批量删除定时任务
 	 */
-	void deleteBatch(Long[] jobIds);
-	
+	void deleteBatch(List<Long> jobIds);
+
 	/**
 	 * 批量更新定时任务状态
 	 */
-	int updateBatch(Long[] jobIds, int status);
-	
+	int updateBatch(List<Long> jobIds, int status);
+
 	/**
 	 * 立即执行
 	 */
-	void run(Long[] jobIds);
-	
+	void run(List<Long> jobIds);
+
 	/**
 	 * 暂停运行
 	 */
-	void pause(Long[] jobIds);
-	
+	void pause(List<Long> jobIds);
+
 	/**
 	 * 恢复运行
 	 */
-	void resume(Long[] jobIds);
+	void resume(List<Long> jobIds);
 }
