@@ -29,7 +29,6 @@
         <module>renren-generator</module>
         <module>khighness-gateway</module>
         <module>gulimall-search</module>
-        <module>gulimall-auth-server</module>
     </modules>
 
 </project>
