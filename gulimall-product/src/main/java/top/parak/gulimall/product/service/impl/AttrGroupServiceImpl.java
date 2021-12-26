@@ -21,6 +21,7 @@ import top.parak.gulimall.product.entity.AttrGroupEntity;
 import top.parak.gulimall.product.service.AttrGroupService;
 import top.parak.gulimall.product.service.AttrService;
 import top.parak.gulimall.product.vo.AttrGroupWithAttrsVo;
+import top.parak.gulimall.product.vo.SkuItemVo;
 
 /**
  * 属性分组
@@ -87,6 +88,13 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         }).collect(Collectors.toList());
 
         return voList;
+    }
+
+    @Override
+    public List<SkuItemVo.SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+        AttrGroupDao baseMapper = this.baseMapper;
+
+        return baseMapper.getAttrGroupWithAttrsBySpuId(spuId, catalogId);
     }
 
 }

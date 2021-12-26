@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.product.entity.AttrGroupEntity;
 import top.parak.gulimall.product.vo.AttrGroupWithAttrsVo;
+import top.parak.gulimall.product.vo.SkuItemVo;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,14 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
      * @return 所有属性分组以及属性列表
      */
     List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId);
+
+    /**
+     * 根据SPU ID和分类ID查询SPU的规格参数
+     * @param spuId     SPU ID
+     * @param catalogId 分类ID
+     * @return SPU的规格参数列表
+     */
+    List<SkuItemVo.SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId);
 
 }
 

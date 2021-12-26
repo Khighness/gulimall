@@ -140,6 +140,28 @@ INSERT INTO `pms_sku_info` VALUES (8, 3, '华为 HUAWEI P40 Pro+ 麒麟990 5G  �
 INSERT INTO `pms_sku_info` VALUES (9, 3, '华为 HUAWEI P40 Pro+ 麒麟990 5G  钛空银 套餐一', NULL, 225, 2, 'https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%9B%BE%E9%9B%861.jpg', '华为 HUAWEI P40 Pro+ 麒麟990 5G  钛空银 套餐一 【白条12期免息送碎屏险】华为 P40 Pro 5G手机 分期', '【保价618，下单立减200，未减咨询，至高可减400】赠原装碎屏险+华为原装智能手环+网红榨汁机+AI蓝牙音箱+硅胶保护壳+保护膜+晒单礼', 4188.0000, 957);
 
 -- ----------------------------
+-- Records of pms_sku_sale_attr_value
+-- ----------------------------
+INSERT INTO `pms_sku_sale_attr_value` VALUES (1, 1, 4, '颜色', '流光幻镜', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (2, 1, 6, '套餐', '套餐二', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (3, 2, 4, '颜色', '流光幻镜', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (4, 2, 6, '套餐', '套餐三', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (5, 3, 4, '颜色', '流光幻镜', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (6, 3, 6, '套餐', '套餐一', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (7, 4, 4, '颜色', '霓影紫', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (8, 4, 6, '套餐', '套餐二', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (9, 5, 4, '颜色', '霓影紫', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (10, 5, 6, '套餐', '套餐三', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (11, 6, 4, '颜色', '霓影紫', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (12, 6, 6, '套餐', '套餐一', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (13, 7, 4, '颜色', '钛空银', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (14, 7, 6, '套餐', '套餐二', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (15, 8, 4, '颜色', '钛空银', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (16, 8, 6, '套餐', '套餐三', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (17, 9, 4, '颜色', '钛空银', 0);
+INSERT INTO `pms_sku_sale_attr_value` VALUES (18, 9, 6, '套餐', '套餐一', 0);
+
+-- ----------------------------
 -- Records of pms_spu_images
 -- ----------------------------
 INSERT INTO `pms_spu_images` VALUES (17, 3, '图集1.jpg', 'https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%9B%BE%E9%9B%861.jpg', 0, NULL);
@@ -159,6 +181,6 @@ INSERT INTO `pms_spu_info` VALUES (3, '华为 HUAWEI P40 Pro+ 麒麟990 5G ', '�
 -- ----------------------------
 -- Records of pms_spu_info_desc
 -- ----------------------------
-INSERT INTO `pms_spu_info_desc` VALUES (3, 'https://mall-fire.oss-cn-shenzhen.aliyuncs.com/2020-06-05/5fcc807c-1a0c-431f-8635-ac75fe2b2a72_华为2.jpg,https://mall-fire.oss-cn-shenzhen.aliyuncs.com/2020-06-05/5952be7a-bca4-4794-8a3f-8612b45bffb0_华为1.jpg,https://mall-fire.oss-cn-shenzhen.aliyuncs.com/2020-06-05/fad57e61-8650-4d5c-87d1-064bfff90553_华为3.jpg,https://mall-fire.oss-cn-shenzhen.aliyuncs.com/2020-06-05/344445d8-346b-4d04-8de1-4e31f6db4336_华为4.jpg,https://mall-fire.oss-cn-shenzhen.aliyuncs.com/2020-06-05/7d36cce9-94dc-49a4-8069-0ae66f57cdc3_华为5.jpg');
+INSERT INTO `pms_spu_info_desc` VALUES (3, 'https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%8D%8E%E4%B8%BA1.jpg,https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%8D%8E%E4%B8%BA2.jpg,https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%8D%8E%E4%B8%BA3.jpg,https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%8D%8E%E4%B8%BA4.jpg,https://khighness-gulimall.oss-cn-shanghai.aliyuncs.com/2021-12-19/%E5%8D%8E%E4%B8%BA5.jpg,');
 
 SET FOREIGN_KEY_CHECKS = 1;

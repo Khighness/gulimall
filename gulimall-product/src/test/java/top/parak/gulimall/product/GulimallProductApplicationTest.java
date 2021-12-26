@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import top.parak.gulimall.product.dao.AttrGroupDao;
+import top.parak.gulimall.product.dao.SkuSaleAttrValueDao;
 import top.parak.gulimall.product.service.CategoryService;
+import top.parak.gulimall.product.vo.SkuItemVo;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,6 +31,12 @@ class GulimallProductApplicationTest {
 
     @Autowired
     private RedissonClient redissonClient;
+
+    @Autowired
+    private AttrGroupDao attrGroupDao;
+
+    @Autowired
+    private SkuSaleAttrValueDao skuSaleAttrValueDao;
 
     @Test
     void testFindCatelogPath() {
@@ -51,6 +61,20 @@ class GulimallProductApplicationTest {
     @Test
     void testRedissson() {
         log.info("{}", redissonClient);
+    }
+
+    @Test
+    void testAttrGroupDao() {
+        List<SkuItemVo.SpuItemAttrGroupVo> res =
+                attrGroupDao.getAttrGroupWithAttrsBySpuId(3L, 225L);
+        log.info(res.toString());
+    }
+
+    @Test
+    void testSkuSaleAttrValueDao() {
+        List<SkuItemVo.SkuItemSaleAttrVo> res =
+                skuSaleAttrValueDao.getSaleAttrsBySpuId(3L);
+        log.info(res.toString());
     }
 
 }

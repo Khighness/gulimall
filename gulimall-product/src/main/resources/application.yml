@@ -78,3 +78,12 @@ mybatis-plus:
 logging:
   level:
     top.parak.gulimall.product.dao: info
+
+# Custom
+gulimall:
+
+# Thread
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10
