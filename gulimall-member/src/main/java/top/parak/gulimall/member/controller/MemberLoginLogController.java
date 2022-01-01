@@ -20,8 +20,8 @@ import top.parak.gulimall.common.utils.R;
  * 会员登录记录
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:41:26
  */
 @RestController
 @RequestMapping("member/memberloginlog")

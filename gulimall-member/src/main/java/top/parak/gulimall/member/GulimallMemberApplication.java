@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:42:52
+ * @since 2021-09-25 10:42:52
  */
 @SpringBootApplication
 @EnableTransactionManagement

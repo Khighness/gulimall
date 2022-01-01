@@ -6,6 +6,7 @@ import top.parak.gulimall.search.vo.SearchResult;
 /**
  * @author KHighness
  * @since 2021-12-13
+ * @email parakovo@gmail.com
  */
 public interface MallSearchService {
 

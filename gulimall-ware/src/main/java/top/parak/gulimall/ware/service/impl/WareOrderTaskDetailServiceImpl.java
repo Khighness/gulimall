@@ -16,8 +16,8 @@ import top.parak.gulimall.ware.service.WareOrderTaskDetailService;
  * 详细库存工作单
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:26:12
  */
 @Service("wareOrderTaskDetailService")
 public class WareOrderTaskDetailServiceImpl extends ServiceImpl<WareOrderTaskDetailDao, WareOrderTaskDetailEntity> implements WareOrderTaskDetailService {

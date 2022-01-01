@@ -11,8 +11,8 @@ import lombok.Data;
  * 回滚日志
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:26:12
  */
 @Data
 @TableName("undo_log")

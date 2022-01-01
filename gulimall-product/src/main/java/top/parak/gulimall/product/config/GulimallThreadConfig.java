@@ -12,11 +12,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author KHighness
  * @since 2021-12-26
+ * @email parakovo@gmail.com
  * @apiNote 线程池配置
  */
-// @EnableConfigurationProperties(ThreadPoolConfigProperties.class)
 @Configuration
-public class MyThreadConfig {
+// @EnableConfigurationProperties(ThreadPoolConfigProperties.class)
+public class GulimallThreadConfig {
 
     @Bean
     public ThreadPoolExecutor threadPoolExecutor(ThreadPoolConfigProperties pool) {

@@ -11,10 +11,11 @@ import java.io.IOException;
 /**
  * @author KHighness
  * @since 2021-12-12
+ * @email parakovo@gmail.com
  * @apiNote Redisson配置
  */
 @Configuration
-public class MyRedissonConfig {
+public class GulimallRedissonConfig {
 
     @Bean(destroyMethod = "shutdown")
     public RedissonClient redissonClient() throws IOException {

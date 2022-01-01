@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * @author KHighness
  * @since 2021-12-24
+ * @email parakovo@gmail.com
  */
 @Data
 public class SkuItemVo {

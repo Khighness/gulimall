@@ -12,8 +12,8 @@ import lombok.Data;
  * 订单退货申请
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Data
 @TableName("oms_order_return_apply")

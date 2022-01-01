@@ -20,8 +20,8 @@ import top.parak.gulimall.common.utils.R;
  * 库存工作单
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:26:12
  */
 @RestController
 @RequestMapping("ware/wareordertask")

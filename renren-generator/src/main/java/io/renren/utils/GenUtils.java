@@ -27,7 +27,7 @@ import java.util.zip.ZipOutputStream;
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2016年12月19日 下午11:40:24
+ * @since 2016年12月19日 下午11:40:24
  */
 public class GenUtils {
 

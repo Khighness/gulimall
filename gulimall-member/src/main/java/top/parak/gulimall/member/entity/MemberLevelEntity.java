@@ -12,8 +12,8 @@ import lombok.Data;
  * 会员等级
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:41:26
  */
 @Data
 @TableName("ums_member_level")

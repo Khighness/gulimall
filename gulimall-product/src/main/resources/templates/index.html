@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>商城首页</title>
-  <link rel="icon" type="img/x-icon" href="index/img/k.ico"/>
+  <link rel="icon" type="img/x-icon" href="/static/index/img/k.ico"/>
   <link rel="stylesheet" href="static/index/css/swiper-3.4.2.min.css">
   <link rel="stylesheet" href="static/index/css/GL.css">
   <script src="static/index/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -91,17 +91,16 @@
   						</div>
   					</b>
         <ul>
-            <li th:if="${session.loginUser} !=null">
-              <a>欢迎，[[${session.loginUser.username}]]</a>
-<!--              <a th:href="'http://member.gulimall.com/user/' + ${session.loginUser.id}+ '.html'">你好，[[${session.loginUser.username}]]</a>-->
+            <li th:if="${session.loginUser} != null">
+              <a th:href="'http://member.gulimall.com/user/' + ${session.loginUser.id}+ '.html'">你好，[[${session.loginUser.username}]]</a>
             </li>
-            <li th:if="${session.loginUser} !=null">
+            <li th:if="${session.loginUser} != null">
               <a href="http://auth.gulimall.com/oauth2.0/logout">退出登录</a>
             </li>
-            <li th:if="${session.loginUser} ==null">
-              <a href="http://auth.gulimall.com/login.html">你好，请登录 </a>
+            <li th:if="${session.loginUser} == null">
+              <a href="http://auth.gulimall.com/login.html">欢迎登录</a>
             </li>
-            <li th:if="${session.loginUser} ==null">
+            <li th:if="${session.loginUser} == null">
               <a href="http://auth.gulimall.com/reg.html" class="li_2">免费注册</a>
             </li>
           <span>|</span>

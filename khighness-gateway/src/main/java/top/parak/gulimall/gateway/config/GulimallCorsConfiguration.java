@@ -9,6 +9,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 /**
  * @author KHighness
  * @since 2021-10-10
+ * @email parakovo@gmial.com
  */
 @Configuration
 public class GulimallCorsConfiguration {
@@ -28,4 +29,5 @@ public class GulimallCorsConfiguration {
         source.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsWebFilter(source);
     }
+
 }

@@ -16,8 +16,8 @@ import top.parak.gulimall.order.service.OrderReturnReasonService;
  * 退货原因
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Service("orderReturnReasonService")
 public class OrderReturnReasonServiceImpl extends ServiceImpl<OrderReturnReasonDao, OrderReturnReasonEntity> implements OrderReturnReasonService {

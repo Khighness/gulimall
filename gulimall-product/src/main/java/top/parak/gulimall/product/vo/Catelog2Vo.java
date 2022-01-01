@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author KHighness
  * @since 2021-12-10
+ * @email parakovo@gmail.com
  * @apiNote 二级分类VO
  */
 @AllArgsConstructor

@@ -8,6 +8,7 @@ import java.util.Set;
 /**
  * @author KHighness
  * @since 2021-10-13
+ * @email parakovo@gmail.com
  */
 public class ListValueConstraintValidator implements ConstraintValidator<ListValue, Integer> {
     private Set<Integer> set = new HashSet<>();

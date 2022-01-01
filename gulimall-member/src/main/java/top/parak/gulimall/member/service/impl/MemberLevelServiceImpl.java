@@ -16,8 +16,8 @@ import top.parak.gulimall.member.service.MemberLevelService;
  * 会员等级
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:41:26
  */
 @Service("memberLevelService")
 public class MemberLevelServiceImpl extends ServiceImpl<MemberLevelDao, MemberLevelEntity> implements MemberLevelService {

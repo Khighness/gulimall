@@ -16,8 +16,8 @@ import top.parak.gulimall.order.service.OrderOperateHistoryService;
  * 订单操作历史记录
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Service("orderOperateHistoryService")
 public class OrderOperateHistoryServiceImpl extends ServiceImpl<OrderOperateHistoryDao, OrderOperateHistoryEntity> implements OrderOperateHistoryService {

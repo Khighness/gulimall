@@ -10,8 +10,8 @@ import java.util.Map;
  * 秒杀活动
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
  */
 public interface SeckillPromotionService extends IService<SeckillPromotionEntity> {
 

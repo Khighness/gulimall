@@ -3,6 +3,7 @@ package top.parak.gulimall.search.constant;
 /**
  * @author KHighness
  * @since 2021-11-10
+ * @email parakovo@gmail.com
  */
 public class EsConstant {
 

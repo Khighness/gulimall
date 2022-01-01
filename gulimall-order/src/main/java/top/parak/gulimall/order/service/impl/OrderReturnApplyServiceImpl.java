@@ -16,8 +16,8 @@ import top.parak.gulimall.order.service.OrderReturnApplyService;
  * 订单退货申请
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Service("orderReturnApplyService")
 public class OrderReturnApplyServiceImpl extends ServiceImpl<OrderReturnApplyDao, OrderReturnApplyEntity> implements OrderReturnApplyService {

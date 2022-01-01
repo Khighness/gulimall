@@ -54,11 +54,18 @@ spring:
       # 缓存空值，防止缓存穿透
       cache-null-values: true
 
-  # Thymeleaf
+# Thymeleaf
   thymeleaf:
     encoding: UTF-8
     enabled: true
     cache: false
+
+# Session
+  session:
+    store-type: redis
+    redis:
+      namespace: gulimall:session
+    timeout: 6000
 
 # MybatisPlus
 mybatis-plus:

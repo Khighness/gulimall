@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * @author KHighness
  * @since 2021-12-17
+ * @email parakovo@gmail.com
  * @apiNote 属性VO
  */
 @Data

@@ -27,8 +27,8 @@ import top.parak.gulimall.product.service.CategoryBrandRelationService;
  * 品牌分类关联
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 21:59:22
  */
 @Service("categoryBrandRelationService")
 public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity> implements CategoryBrandRelationService {

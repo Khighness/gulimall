@@ -16,8 +16,8 @@ import top.parak.gulimall.member.service.MemberLoginLogService;
  * 会员登录记录
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:41:26
  */
 @Service("memberLoginLogService")
 public class MemberLoginLogServiceImpl extends ServiceImpl<MemberLoginLogDao, MemberLoginLogEntity> implements MemberLoginLogService {

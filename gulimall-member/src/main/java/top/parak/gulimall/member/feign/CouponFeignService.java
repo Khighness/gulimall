@@ -6,8 +6,8 @@ import top.parak.gulimall.common.utils.R;
 
 /**
  * @author KHighness
- * @email parakovo@gmial.com
- * @date 2021-09-25 17:13:57
+ * @since 2021-09-25
+ * @email parakovo@gmail.com
  */
 
 @FeignClient("gulimall-coupon")

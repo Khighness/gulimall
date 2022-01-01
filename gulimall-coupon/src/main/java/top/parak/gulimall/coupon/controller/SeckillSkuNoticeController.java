@@ -20,8 +20,8 @@ import top.parak.gulimall.common.utils.R;
  * 秒杀商品通知订阅
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:08:13
  */
 @RestController
 @RequestMapping("coupon/seckillskunotice")

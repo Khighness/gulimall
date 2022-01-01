@@ -10,8 +10,8 @@ import java.util.Map;
  * 详细库存工作单
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:26:12
  */
 public interface WareOrderTaskDetailService extends IService<WareOrderTaskDetailEntity> {
 

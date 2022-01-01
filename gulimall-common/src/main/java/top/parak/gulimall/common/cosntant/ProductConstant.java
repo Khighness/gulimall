@@ -3,6 +3,7 @@ package top.parak.gulimall.common.cosntant;
 /**
  * @author KHighness
  * @since 2021-10-15
+ * @email parakovo@gmail.com
  */
 public class ProductConstant {
 

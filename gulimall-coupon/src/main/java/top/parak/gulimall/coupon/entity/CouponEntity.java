@@ -12,8 +12,8 @@ import lombok.Data;
  * 优惠券信息
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
  */
 @Data
 @TableName("sms_coupon")

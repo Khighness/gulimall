@@ -11,8 +11,8 @@ import lombok.Data;
  * 会员
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:41:26
  */
 @Data
 @TableName("ums_member")
@@ -109,5 +109,20 @@ public class MemberEntity implements Serializable {
 	 * 注册时间
 	 */
 	private Date createTime;
+
+	/**
+	 * 社交账号id
+	 */
+	private String socialUid;
+
+	/**
+	 * 社交账号token
+	 */
+	private String accessToken;
+
+	/**
+	 * 社交登录token过期时间
+	 */
+	private Long expiresIn;
 
 }

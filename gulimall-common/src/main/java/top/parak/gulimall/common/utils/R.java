@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-09-21 21:59:27
+ * @since 2021-09-21 21:59:27
  */
 public class R extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;

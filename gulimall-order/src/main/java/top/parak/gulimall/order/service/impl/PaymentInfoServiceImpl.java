@@ -16,8 +16,8 @@ import top.parak.gulimall.order.service.PaymentInfoService;
  * 支付信息表
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Service("paymentInfoService")
 public class PaymentInfoServiceImpl extends ServiceImpl<PaymentInfoDao, PaymentInfoEntity> implements PaymentInfoService {

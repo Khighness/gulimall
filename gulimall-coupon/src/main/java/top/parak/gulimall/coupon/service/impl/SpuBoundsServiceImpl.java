@@ -16,8 +16,8 @@ import top.parak.gulimall.coupon.service.SpuBoundsService;
  * 商品spu积分设置
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:08:13
  */
 @Service("spuBoundsService")
 public class SpuBoundsServiceImpl extends ServiceImpl<SpuBoundsDao, SpuBoundsEntity> implements SpuBoundsService {

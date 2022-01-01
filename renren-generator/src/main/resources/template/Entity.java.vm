@@ -14,8 +14,8 @@ import lombok.Data;
  * ${comments}
  *
  * @author ${author}
+ * @since ${datetime}
  * @email ${email}
- * @date ${datetime}
  */
 @Data
 @TableName("${tableName}")

@@ -17,7 +17,6 @@ import top.parak.gulimall.coupon.service.CouponHistoryService;
  *
  * @author KHighness
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
  */
 @Service("couponHistoryService")
 public class CouponHistoryServiceImpl extends ServiceImpl<CouponHistoryDao, CouponHistoryEntity> implements CouponHistoryService {

@@ -20,8 +20,8 @@ import ${mainPath}.common.utils.R;
  * ${comments}
  *
  * @author ${author}
+ * @since ${datetime}
  * @email ${email}
- * @date ${datetime}
  */
 @RestController
 @RequestMapping("${moduleName}/${pathName}")

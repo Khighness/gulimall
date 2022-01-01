@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * @author KHighness
  * @since 2021-11-10
+ * @email parakovo@gmail.com
  */
 @FeignClient("gulimall-ware")
 public interface WareFeignService {

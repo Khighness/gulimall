@@ -17,8 +17,8 @@ import top.parak.gulimall.common.utils.R;
  * 商品满减信息
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:08:13
  */
 @RestController
 @RequestMapping("coupon/skufullreduction")

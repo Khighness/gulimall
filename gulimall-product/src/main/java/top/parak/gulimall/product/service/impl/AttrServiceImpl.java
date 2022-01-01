@@ -34,8 +34,8 @@ import top.parak.gulimall.product.vo.AttrVo;
  * 商品属性
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 21:59:22
  */
 @Service("attrService")
 public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements AttrService {
@@ -249,8 +249,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         // 模糊查询
         String key = (String) params.get("key");
         if (!StringUtils.isEmpty(key)) {
-            queryWrapper.and((q) -> {
-                q.eq("attr_id", key).or().like("attr_name", key);
+            queryWrapper.and((wrapper) -> {
+                wrapper.eq("attr_id", key).or().like("attr_name", key);
             });
         }
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), queryWrapper);

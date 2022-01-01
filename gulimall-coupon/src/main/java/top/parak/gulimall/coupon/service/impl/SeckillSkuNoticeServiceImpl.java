@@ -16,8 +16,8 @@ import top.parak.gulimall.coupon.service.SeckillSkuNoticeService;
  * 秒杀商品通知订阅
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:08:13
  */
 @Service("seckillSkuNoticeService")
 public class SeckillSkuNoticeServiceImpl extends ServiceImpl<SeckillSkuNoticeDao, SeckillSkuNoticeEntity> implements SeckillSkuNoticeService {

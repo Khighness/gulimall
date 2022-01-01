@@ -11,8 +11,8 @@ import lombok.Data;
  * 品牌分类关联
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 21:59:22
  */
 @Data
 @TableName("pms_category_brand_relation")

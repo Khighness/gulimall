@@ -4,8 +4,8 @@ package top.parak.gulimall.common.utils;
  * 常量
  *
  * @author KHighness
+ * @since  2021-09-21
  * @email parakovo@gmail.com
- * @date 2021-09-21 22:01:55
  */
 public class Constant {
 	/**

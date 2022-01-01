@@ -12,8 +12,8 @@ import lombok.Data;
  * 订单项信息
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Data
 @TableName("oms_order_item")

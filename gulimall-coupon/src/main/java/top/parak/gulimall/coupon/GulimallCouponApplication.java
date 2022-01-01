@@ -9,11 +9,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * @author KHighness
  * @since 2021-10-16
+ * @email parakovo@gmail.com
  */
-@SpringBootApplication
-@EnableTransactionManagement
 @EnableDiscoveryClient
+@EnableTransactionManagement
 @MapperScan("top.parak.gulimall.coupon.dao")
+@SpringBootApplication
 public class GulimallCouponApplication {
     public static void main(String[] args) {
         SpringApplication.run(GulimallCouponApplication.class);

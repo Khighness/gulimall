@@ -103,6 +103,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Configuration -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
         <!-- Aliyun OSS -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

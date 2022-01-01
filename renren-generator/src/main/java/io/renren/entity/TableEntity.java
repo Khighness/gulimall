@@ -4,10 +4,10 @@ import java.util.List;
 
 /**
  * 表数据
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2016年12月20日 上午12:02:55
+ * @since 2016年12月20日 上午12:02:55
  */
 public class TableEntity {
 	//表的名称
@@ -18,12 +18,12 @@ public class TableEntity {
 	private ColumnEntity pk;
 	//表的列名(不包含主键)
 	private List<ColumnEntity> columns;
-	
+
 	//类名(第一个字母大写)，如：sys_user => SysUser
 	private String className;
 	//类名(第一个字母小写)，如：sys_user => sysUser
 	private String classname;
-	
+
 	public String getTableName() {
 		return tableName;
 	}

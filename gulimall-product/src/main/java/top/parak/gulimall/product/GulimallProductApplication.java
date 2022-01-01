@@ -9,20 +9,22 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 商品服务启动器
  *
  * @author KHighness
+ * @since  2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 22:08:32
  */
-@SpringBootApplication
 @EnableCaching
-@EnableTransactionManagement
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "top.parak.gulimall.product.feign")
+@EnableRedisHttpSession
+@EnableTransactionManagement
+@SpringBootApplication
 public class GulimallProductApplication {
     public static void main(String[] args) {
         SpringApplication gulimallProductApplication = new SpringApplicationBuilder(GulimallProductApplication.class)

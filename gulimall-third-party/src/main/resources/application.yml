@@ -1,3 +1,4 @@
+# Server
 server:
   port: 30000
 
@@ -18,5 +19,13 @@ spring:
       access-key: LTAI5tNX5UroFeTYGf9GjtGD
       secret-key: rj3UWP6LiKkIUreE3hN1Q1VH5ebPkk
       oss:
-        endpoint: oss-cn-shanghai.aliyuncs.com
         bucket: khighness-gulimall
+        endpoint: oss-cn-shanghai.aliyuncs.com
+
+# SMS
+      sms:
+        app-code: d5d117bbb81848f6ae7bbc2a3e0e6d52
+        host: http://edisim.market.alicloudapi.com
+        path: /comms/sms/groupmessaging
+        callback-url: http://www.esandinfo.com/sms/notify
+        template-id: "0000000"

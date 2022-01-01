@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * @author KHighness
  * @since 2021-10-14
+ * @email parakovo@gmail.com
  */
 @Data
 public class AttrVo {

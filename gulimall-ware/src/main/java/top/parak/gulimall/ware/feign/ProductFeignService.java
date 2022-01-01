@@ -8,6 +8,7 @@ import top.parak.gulimall.common.utils.R;
 /**
  * @author KHighness
  * @since 2021-10-28
+ * @email parakovo@gmial.com
  */
 @FeignClient("gulimall-product")
 public interface ProductFeignService {

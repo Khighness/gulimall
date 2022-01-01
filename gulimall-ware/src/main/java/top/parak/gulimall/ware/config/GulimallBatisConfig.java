@@ -8,10 +8,11 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author KHighness
  * @since 2021-10-28
+ * @email parakovo@gmial.com
  */
 @Configuration
 @MapperScan("top.parak.gulimall.ware.dao")
-public class MyBatisConfig {
+public class GulimallBatisConfig {
 
     @Bean
     public PaginationInnerInterceptor paginationInterceptor() {

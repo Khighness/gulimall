@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author KHighness
  * @since 2021-12-26
+ * @email parakovo@gmail.com
  * @apiNote 线程池参数文件配置
  */
 @Data

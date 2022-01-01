@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * @author KHighness
  * @since 2021-12-17
+ * @email parakovo@gmail.com
  */
 @FeignClient("gulimall-product")
 public interface ProductFeignService {

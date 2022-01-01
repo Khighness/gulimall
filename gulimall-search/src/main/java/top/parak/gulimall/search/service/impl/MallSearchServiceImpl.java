@@ -46,6 +46,7 @@ import java.util.stream.Collectors;
 /**
  * @author KHighness
  * @since 2021-12-13
+ * @email parakovo@gmail.com
  */
 @Slf4j
 @Service

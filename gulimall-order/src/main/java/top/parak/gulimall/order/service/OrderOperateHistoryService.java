@@ -10,8 +10,8 @@ import java.util.Map;
  * 订单操作历史记录
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 public interface OrderOperateHistoryService extends IService<OrderOperateHistoryEntity> {
 

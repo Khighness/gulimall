@@ -10,8 +10,8 @@ import java.util.Map;
  * 订单配置信息
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 public interface OrderSettingService extends IService<OrderSettingEntity> {
 

@@ -7,6 +7,7 @@ import java.util.concurrent.*;
 /**
  * @author KHighness
  * @since 2021-12-20
+ * @email parakovo@gmail.com
  */
 @Slf4j
 public class MultiThreadDemo {

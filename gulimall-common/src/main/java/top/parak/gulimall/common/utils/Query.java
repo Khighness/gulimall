@@ -12,8 +12,8 @@ import java.util.Map;
  * 查询参数
  *
  * @author KHighness
+ * @since 2021-09-21
  * @email parakovo@gmail.com
- * @date 2021-09-21 21:58:33
  */
 public class Query<T> {
 

@@ -12,11 +12,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * @author KHighness
  * @since 2021-12-13
+ * @email parakovo@gmail.com
  * @apiNote 缓存配置
  */
 @EnableConfigurationProperties(CacheProperties.class)
 @Configuration
-public class MyCacheConfig {
+public class GulimallCacheConfig {
 
     @Autowired
     private CacheProperties cacheProperties;

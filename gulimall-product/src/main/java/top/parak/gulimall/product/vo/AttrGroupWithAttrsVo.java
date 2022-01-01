@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author KHighness
  * @since 2021-10-15
+ * @email parakovo@gmail.com
  */
 @Data
 public class AttrGroupWithAttrsVo {

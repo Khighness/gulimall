@@ -11,8 +11,8 @@ import lombok.Data;
  * 首页轮播广告
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
  */
 @Data
 @TableName("sms_home_adv")

@@ -16,8 +16,8 @@ import top.parak.gulimall.product.service.SpuInfoDescService;
  * spu信息介绍
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 21:59:22
  */
 @Service("spuInfoDescService")
 public class SpuInfoDescServiceImpl extends ServiceImpl<SpuInfoDescDao, SpuInfoDescEntity> implements SpuInfoDescService {

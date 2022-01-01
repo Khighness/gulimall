@@ -16,8 +16,8 @@ import top.parak.gulimall.coupon.service.CouponSpuCategoryRelationService;
  * 优惠券分类关联
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
  */
 @Service("couponSpuCategoryRelationService")
 public class CouponSpuCategoryRelationServiceImpl extends ServiceImpl<CouponSpuCategoryRelationDao, CouponSpuCategoryRelationEntity> implements CouponSpuCategoryRelationService {

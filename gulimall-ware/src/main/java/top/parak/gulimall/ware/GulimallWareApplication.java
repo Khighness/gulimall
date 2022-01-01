@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 仓储服务启动器
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:40:07
  */
 @SpringBootApplication
 @EnableTransactionManagement

@@ -16,8 +16,8 @@ import top.parak.gulimall.order.service.RefundInfoService;
  * 退款信息
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Service("refundInfoService")
 public class RefundInfoServiceImpl extends ServiceImpl<RefundInfoDao, RefundInfoEntity> implements RefundInfoService {

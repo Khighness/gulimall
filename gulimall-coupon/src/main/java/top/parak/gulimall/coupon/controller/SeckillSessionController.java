@@ -20,8 +20,8 @@ import top.parak.gulimall.common.utils.R;
  * 秒杀活动场次
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
  */
 @RestController
 @RequestMapping("coupon/seckillsession")

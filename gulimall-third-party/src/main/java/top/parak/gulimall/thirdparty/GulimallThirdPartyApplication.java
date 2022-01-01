@@ -8,8 +8,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * 第三方服务启动器
  *
  * @author KHighness
+ * @since 2021-09-27
  * @email parakovo@gmial.com
- * @date 2021-09-27 00:26:45
  */
 @EnableDiscoveryClient
 @SpringBootApplication

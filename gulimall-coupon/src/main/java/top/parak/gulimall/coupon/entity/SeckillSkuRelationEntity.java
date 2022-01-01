@@ -12,8 +12,8 @@ import lombok.Data;
  * 秒杀活动商品关联
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:08:13
  */
 @Data
 @TableName("sms_seckill_sku_relation")

@@ -14,6 +14,7 @@ import java.util.Map;
 /**
  * @author KHighness
  * @since 2021-10-13
+ * @email parakovo@gmail.com
  */
 @Slf4j
 @RestControllerAdvice(basePackages = "top.parak.gulimall.product.controller")

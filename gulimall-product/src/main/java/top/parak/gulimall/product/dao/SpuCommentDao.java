@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 商品评价
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 21:59:22
  */
 @Mapper
 public interface SpuCommentDao extends BaseMapper<SpuCommentEntity> {

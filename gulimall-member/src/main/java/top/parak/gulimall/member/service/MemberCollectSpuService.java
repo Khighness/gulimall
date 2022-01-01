@@ -10,8 +10,8 @@ import java.util.Map;
  * 会员收藏的商品
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-09-25 10:41:26
  */
 public interface MemberCollectSpuService extends IService<MemberCollectSpuEntity> {
 

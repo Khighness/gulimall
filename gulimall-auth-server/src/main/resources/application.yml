@@ -1,0 +1,63 @@
+# Server
+server:
+  port: 20000
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+
+# Nacos
+  application:
+    name: gulimall-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.117.155:8848
+
+# Json
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+# Redis
+  redis:
+    host: 192.168.117.155
+    port: 6379
+    database: 0
+    password: KAG1823
+
+# Session
+  session:
+    store-type: redis
+    redis:
+      namespace: gulimall:session
+    timeout: 6000
+
+  # Thymeleaf
+  thymeleaf:
+    encoding: UTF-8
+    enabled: true
+    cache: false
+
+# OAuth2.0
+oauth:
+
+  github:
+    client-id: 2e425703a7e8f4cce493
+    client-secret: 1bd733fa96c1e2a483960c80c22676b0cdb12290
+    authorize-url: https://github.com/login/oauth/authorize
+    redirect-url: http://auth.gulimall.com/oauth2.0/github/success
+    access-host: https://github.com
+    access-path: /login/oauth/access_token
+    grant_type: authorization_code
+
+  yuque:
+    client-id: CsDghTCwfB0t0mkt4Xfu
+    client-secret: FmwypC7mOcHTrqG9fS4PRzkqRwG2qHniXJsepUzc
+    authorize-url: https://www.yuque.com/oauth2/authorize
+    redirect-url: http://auth.gulimall.com/oauth2.0/yuque/success
+    access-host: https://www.yuque.com
+    access-path: /oauth2/token
+    grant_type: authorization_code
+
+

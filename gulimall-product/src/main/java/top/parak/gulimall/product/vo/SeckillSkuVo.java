@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 /**
  * @author KHighness
  * @since 2021-12-25
+ * @email parakovo@gmail.com
  */
 @Data
 public class SeckillSkuVo {

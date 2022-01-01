@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * @author KHighness
  * @since 2021-11-10
- *
- * <p>ElasticSearch存储模型
+ * @email parakovo@gmail.com
+ * @apiNote ElasticSearch存储模型
  * <pre>
  * {@code
  * PUT gulimall_product

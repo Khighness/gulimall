@@ -20,8 +20,7 @@ import top.parak.gulimall.common.utils.R;
  * 优惠券信息
  *
  * @author KHighness
- * @email parakovo@gmail.com
- * @date 2021-10-16 21:10:57
+  * @since 2021-10-16* @email parakovo@gmail.com
  */
 @RestController
 @RequestMapping("coupon/coupon")

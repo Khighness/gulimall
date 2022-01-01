@@ -12,8 +12,8 @@ import lombok.Data;
  * 详细采购信息
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:26:12
  */
 @Data
 @TableName("wms_purchase_detail")
@@ -21,7 +21,7 @@ public class PurchaseDetailEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 *
 	 */
 	@TableId
 	private Long id;

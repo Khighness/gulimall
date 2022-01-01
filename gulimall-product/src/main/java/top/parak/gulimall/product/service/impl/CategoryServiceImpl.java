@@ -40,8 +40,8 @@ import top.parak.gulimall.product.vo.Catelog2Vo;
  * 商品三级分类
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-24 21:59:22
  */
 @Slf4j
 @Service("categoryService")
@@ -169,7 +169,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         } else { // 缓存命中
             log.info("「首页分类数据」命中缓存");
             // 4. json反序列化成对象
-            result = JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catelog2Vo>>>() {});
+            result = JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catelog2Vo>>>() { });
         }
 
         return result;
@@ -227,6 +227,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
             } catch (InterruptedException e) {
                 log.error(e.getMessage());
             }
+
             // 分布式自旋锁
             return getCatalogJsonDbWithRedisLock();
         }

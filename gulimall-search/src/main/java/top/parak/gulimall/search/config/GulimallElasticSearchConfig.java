@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author KHighness
  * @since 2021-11-02
+ * @email parakovo@gmail.com
  */
 @Configuration
 public class GulimallElasticSearchConfig {
@@ -24,19 +25,10 @@ public class GulimallElasticSearchConfig {
         COMMON_OPTIONS = builder.build();
     }
 
-    @Value("${es.host}")
-    private String host;
-
-    @Value("${es.port}")
-    private Integer port;
-
-    @Value("${es.schema}")
-    private String schema;
-
     @Bean
-    public RestHighLevelClient esRestClient() {
+    public RestHighLevelClient esRestClient(GulimallElasticSearchProperties properties) {
         RestClientBuilder builder = RestClient.builder(
-                new HttpHost(host, port, schema)
+                new HttpHost(properties.getHost(), properties.getPort(), properties.getSchema())
         );
         return new RestHighLevelClient(builder);
     }

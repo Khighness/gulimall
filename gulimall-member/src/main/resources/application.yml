@@ -41,3 +41,9 @@ mybatis-plus:
     db-config:
       id-type: auto
 
+# OAuth2.0
+oauth:
+  api:
+    github: https://api.github.com/user
+    yuque: https://www.yuque.com/api/v2/user
+    weibo: https://api.weibo.com/2/users/show.json

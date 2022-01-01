@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author KHighness
  * @since 2021-12-13
+ * @email parakovo@gmail.com
  */
 @Controller
 public class SearchController {

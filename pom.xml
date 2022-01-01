@@ -14,6 +14,7 @@
         <developer>
             <name>KHighness</name>
             <email>parakovo@gmail.com</email>
+            <url>https://www.parak.top</url>
         </developer>
     </developers>
 
@@ -29,6 +30,7 @@
         <module>renren-generator</module>
         <module>khighness-gateway</module>
         <module>gulimall-search</module>
+        <module>gulimall-auth-server</module>
     </modules>
 
 </project>

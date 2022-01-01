@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
  * 退货原因
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:21:34
  */
 @Mapper
 public interface OrderReturnReasonDao extends BaseMapper<OrderReturnReasonEntity> {

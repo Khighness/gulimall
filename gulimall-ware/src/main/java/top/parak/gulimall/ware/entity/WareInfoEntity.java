@@ -11,8 +11,8 @@ import lombok.Data;
  * 仓库信息
  *
  * @author KHighness
+ * @since 2021-09-25
  * @email parakovo@gmail.com
- * @date 2021-09-25 11:26:12
  */
 @Data
 @TableName("wms_ware_info")

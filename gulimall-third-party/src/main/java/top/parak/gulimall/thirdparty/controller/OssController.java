@@ -1,18 +1,18 @@
 package top.parak.gulimall.thirdparty.controller;
 
+import com.alibaba.alicloud.context.AliCloudProperties;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.parak.gulimall.common.utils.R;
+import top.parak.gulimall.thirdparty.component.OssComponent;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -21,6 +21,7 @@ import java.util.Map;
 /**
  * @author KHighness
  * @since 2021-10-12
+ * @email parakovo@gmail.com
  */
 @Slf4j
 @RestController
@@ -29,19 +30,16 @@ public class OssController {
     @Resource
     private OSS ossClient;
 
-    @Value("${spring.cloud.alicloud.access-key}")
-    private String accessId;
+    @Autowired
+    private AliCloudProperties aliCloudProperties;
 
-    @Value("${spring.cloud.alicloud.oss.bucket}")
-    private String bucket;
-
-    @Value("${spring.cloud.alicloud.oss.endpoint}")
-    private String endpoint;
+    @Autowired
+    private OssComponent ossComponent;
 
     @RequestMapping("/oss/policy")
     public R policy() {
         // host的格式为 bucketname.endpoint
-        String host = "https://" + bucket + "." + endpoint;
+        String host = "https://" + ossComponent.getBucket() + "." + ossComponent.getEndpoint();
         // callbackUrl为上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
         // String callbackUrl = "http://88.88.88.88:8888";
         // 用户上传文件时指定的前缀
@@ -63,8 +61,8 @@ public class OssController {
             String encodedPolicy = BinaryUtil.toBase64String(binaryData);
             String postSignature = ossClient.calculatePostSignature(postPolicy);
 
-            respMap = new LinkedHashMap<String, String>();
-            respMap.put("accessid", accessId);
+            respMap = new LinkedHashMap<>();
+            respMap.put("accessid", aliCloudProperties.getAccessKey());
             respMap.put("policy", encodedPolicy);
             respMap.put("signature", postSignature);
             respMap.put("dir", dir);

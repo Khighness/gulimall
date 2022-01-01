@@ -5,6 +5,7 @@ import lombok.Data;
 /**
  * @author KHighness
  * @since 2021-12-25
+ * @email parakovo@gmail.com
  */
 @Data
 public class AttrValueWithSkuIdVo {

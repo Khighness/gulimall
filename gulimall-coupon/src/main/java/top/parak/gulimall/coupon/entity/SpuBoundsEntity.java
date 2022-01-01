@@ -12,8 +12,8 @@ import lombok.Data;
  * 商品spu积分设置
  *
  * @author KHighness
+ * @since 2021-10-16
  * @email parakovo@gmail.com
- * @date 2021-10-16 21:08:13
  */
 @Data
 @TableName("sms_spu_bounds")
