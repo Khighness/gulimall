@@ -1,0 +1,22 @@
+# Server
+server:
+  port: 15001
+
+spring:
+
+# Thymeleaf
+  thymeleaf:
+    cache: false
+
+# Redis
+  redis:
+    host: 192.168.117.155
+    port: 6379
+    database: 0
+    password: KAG1823
+
+# SSO
+sso:
+  server:
+    host: http://ssoserver.com:15000
+    path: /login.html

@@ -31,6 +31,7 @@
         <module>khighness-gateway</module>
         <module>gulimall-search</module>
         <module>gulimall-auth-server</module>
+        <module>gulimall-sso-test</module>
     </modules>
 
 </project>
