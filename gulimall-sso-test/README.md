@@ -16,7 +16,7 @@ gulimall-sso-test
 
 ### HOSTS配置
 
-windows系统，修改配置文件`C:\Windows\System32\drivers\etc\HOSTs`，添加如下配置：
+windows系统，修改配置文件`C:\Windows\System32\drivers\etc\hosts`，添加如下配置：
 ```
 ##### SSO #####
 127.0.0.1   ssoserver.com
@@ -34,10 +34,10 @@ windows系统，修改配置文件`C:\Windows\System32\drivers\etc\HOSTs`，添�
    
 2. 其他情况下，都需要重定向回SSO服务器进行认证。
 
-    a. SSO服务器先从cookie取出token。
-    b. 如果不为空则检验token是否过期。
-    c. 如果为空则重定向到登录页面。
-    d. 用户登录成功则将token设置在cookie中。
+    1. SSO服务器先从cookie取出token。
+    2. 如果不为空则检验token是否过期。
+    3. 如果为空则重定向到登录页面。
+    4. 用户登录成功则将token设置在cookie中。
 
 
 
