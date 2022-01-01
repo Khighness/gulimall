@@ -19,7 +19,8 @@ gulimall
     ├───gulimall-ware         🏬 仓储服务
     ├───gulimall-order        🧾 订单服务
     ├───gulimall-coupon       🧊 积分服务
-    └───gulimall-search       🔍 检索服务
+    ├───gulimall-search       🔍 检索服务
+    └───gulimall-sso-test     ⭕ 单点登录
 ```
 
 
