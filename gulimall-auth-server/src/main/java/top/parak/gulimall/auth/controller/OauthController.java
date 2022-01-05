@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import top.parak.gulimall.auth.feign.MemberFeignService;
+import top.parak.gulimall.auth.oauth.WeiboOauthProperties;
 import top.parak.gulimall.auth.service.OauthTokenService;
 import top.parak.gulimall.auth.oauth.GithubOauthProperties;
 import top.parak.gulimall.common.cosntant.AuthServerConstant;
@@ -56,6 +57,8 @@ public class OauthController {
     @Autowired
     private YuqueOauthProperties yuqueOauthProperties;
 
+    @Autowired
+    private WeiboOauthProperties weiboOauthProperties;
 
     /**
      * Github认证
@@ -120,6 +123,39 @@ public class OauthController {
         }
 
         return handleAuthorizationError(session, errors, AuthServerConstant.SOCIAL_PLATFORM_YUQUE, code);
+    }
+
+    /**
+     * 微博认证
+     *
+     * <ol>
+     * <li>登录页面 GET https://api.weibo.com/oauth2/authorize</li>
+     * <li>认证中心 POST https://api.weibo.com/oauth2/access_token</li>
+     * <li>会员服务 curl https://api.weibo.com/2/users/show.json?access_token=${access_token}&uid=${uid}</li>
+     * </ol>
+     *
+     * @see <a href="https://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6">Yuque Oauth Doc</a>
+     */
+    @GetMapping("/oauth2.0/weibo/success")
+    public Object weiboAuthorize(@RequestParam("code") String code, HttpSession session) throws Exception {
+        ResponseEntity<String> responseEntity = oauthTokenService.getAccessToken(weiboOauthProperties, code);
+        Map<String, String> errors = new HashMap<>();
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            WeiboOauthToken weiboOauthToken = JSON.parseObject(responseEntity.getBody(),
+                    new TypeReference<WeiboOauthToken>() { });
+
+            log.info("{}", weiboOauthToken);
+
+            String loginResult = handleSocialLogin(session, errors, weiboOauthToken, code,
+                    AuthServerConstant.SOCIAL_PLATFORM_WEIBO);
+
+            if (!ObjectUtils.isEmpty(loginResult)) {
+                return loginResult;
+            }
+        }
+
+        return handleAuthorizationError(session, errors, AuthServerConstant.SOCIAL_PLATFORM_WEIBO, code);
     }
 
     /**

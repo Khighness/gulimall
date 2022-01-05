@@ -19,6 +19,7 @@ import top.parak.gulimall.common.oauth.WeiboOauthToken;
 import top.parak.gulimall.common.oauth.YuqueOauthToken;
 import top.parak.gulimall.member.oauth.GithubUser;
 import top.parak.gulimall.member.oauth.OauthApiProperties;
+import top.parak.gulimall.member.oauth.WeiboUser;
 import top.parak.gulimall.member.oauth.YuqueUser;
 import top.parak.gulimall.member.service.OauthApiService;
 
@@ -81,8 +82,23 @@ public class OauthApiServiceImpl implements OauthApiService {
     }
 
     @Override
-    public WeiboOauthToken getWeiboUserInfo(WeiboOauthToken oauthToken) {
+    public WeiboUser getWeiboUserInfo(WeiboOauthToken oauthToken) {
         checkToken(oauthToken);
+
+        StringBuilder url = new StringBuilder(oauthApiProperties.getWeibo())
+                .append("?access_token=").append(oauthToken.getAccessToken())
+                .append("&uid=").append(oauthToken.getUid());
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
+
+        ResponseEntity<String> responseEntity = restTemplate.exchange(url.toString(),
+                HttpMethod.GET, httpEntity, String.class);
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            return JSON.parseObject(responseEntity.getBody(), new TypeReference<WeiboUser>() { });
+        }
+
         return null;
     }
 

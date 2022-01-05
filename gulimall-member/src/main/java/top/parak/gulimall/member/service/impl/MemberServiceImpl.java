@@ -27,6 +27,7 @@ import top.parak.gulimall.member.entity.MemberLevelEntity;
 import top.parak.gulimall.member.exception.PhoneRegisteredException;
 import top.parak.gulimall.member.exception.UsernameExistedException;
 import top.parak.gulimall.member.oauth.GithubUser;
+import top.parak.gulimall.member.oauth.WeiboUser;
 import top.parak.gulimall.member.oauth.YuqueUser;
 import top.parak.gulimall.member.service.MemberService;
 import top.parak.gulimall.member.service.OauthApiService;
@@ -161,6 +162,12 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
             memberEntity.setSign(yuqueUserInfo.getDescription());
         } else if (oauthToken instanceof WeiboOauthToken) {
             // NONE
+            WeiboUser weiboUserInfo = oauthApiService.getWeiboUserInfo((WeiboOauthToken) oauthToken);
+            socialUid = "Weibo@" + weiboUserInfo.getId();
+            username = weiboUserInfo.getScreenName();
+            memberEntity.setNickname(weiboUserInfo.getName());
+            memberEntity.setHeader(weiboUserInfo.getProfileImageUrl());
+            memberEntity.setSign(weiboUserInfo.getDescription());
         } else {
             throw new IllegalArgumentException("Invalid oauth token type");
         }

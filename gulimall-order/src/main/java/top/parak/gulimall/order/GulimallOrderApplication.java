@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @since 2021-09-25
  * @email parakovo@gmail.com
  */
-@SpringBootApplication
-@EnableTransactionManagement
 @EnableDiscoveryClient
+@EnableTransactionManagement
 @MapperScan("top.parak.gulimall.order.dao")
+@SpringBootApplication
 public class GulimallOrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(GulimallOrderApplication.class, args);

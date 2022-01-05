@@ -14,7 +14,7 @@ spring:
       discovery:
         server-addr: 192.168.117.155:8848
 
-  # Json
+# Json
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

@@ -13,4 +13,6 @@ public class GulimallPageConstant {
 
     public static final String REDIRECT_REGISTER = "redirect:http://auth.gulimall.com/reg.html";
 
+    public static final String REDIRECT_CART = "redirect:http://cart.gulimall.com/cart.html";
+
 }

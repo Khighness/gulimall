@@ -1,0 +1,57 @@
+# Server
+server:
+  port: 40000
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+
+# Nacos
+  application:
+    name: gulimall-cart
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.117.155:8848
+
+# Json
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+# Redis
+  redis:
+    host: 192.168.117.155
+    port: 6379
+    database: 0
+    password: KAG1823
+
+# Cache
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000
+      use-key-prefix: true
+      cache-null-values: true
+
+# Thymeleaf
+  thymeleaf:
+    encoding: UTF-8
+    enabled: true
+    cache: false
+
+# Session
+  session:
+    store-type: redis
+    redis:
+      namespace: gulimall:session
+    timeout: 6000
+
+# Custom
+gulimall:
+
+# Thread
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10

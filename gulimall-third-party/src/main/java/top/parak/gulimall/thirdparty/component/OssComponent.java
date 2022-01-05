@@ -1,6 +1,5 @@
 package top.parak.gulimall.thirdparty.component;
 
-import com.alibaba.alicloud.context.AliCloudProperties;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Component;
  * @author KHighness
  * @since 2021-12-31
  * @email parakovo@gmail.com
+ * @apiNote 阿里云对象存储
  */
 @Component
 @ConfigurationProperties(prefix = "spring.cloud.alicloud.oss")

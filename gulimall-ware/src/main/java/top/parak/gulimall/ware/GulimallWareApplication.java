@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @since 2021-09-25
  * @email parakovo@gmail.com
  */
-@SpringBootApplication
-@EnableTransactionManagement
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableTransactionManagement
+@SpringBootApplication
 public class GulimallWareApplication {
     public static void main(String[] args) {
         SpringApplication.run(GulimallWareApplication.class, args);

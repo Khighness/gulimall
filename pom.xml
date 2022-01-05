@@ -32,6 +32,7 @@
         <module>gulimall-search</module>
         <module>gulimall-auth-server</module>
         <module>gulimall-sso-test</module>
+        <module>gulimall-cart</module>
     </modules>
 
 </project>

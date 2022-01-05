@@ -4,6 +4,7 @@ import top.parak.gulimall.common.oauth.GithubOauthToken;
 import top.parak.gulimall.common.oauth.WeiboOauthToken;
 import top.parak.gulimall.common.oauth.YuqueOauthToken;
 import top.parak.gulimall.member.oauth.GithubUser;
+import top.parak.gulimall.member.oauth.WeiboUser;
 import top.parak.gulimall.member.oauth.YuqueUser;
 
 /**
@@ -16,6 +17,6 @@ public interface OauthApiService {
 
     YuqueUser getYuqueUserInfo(YuqueOauthToken oauthToken);
 
-    WeiboOauthToken getWeiboUserInfo(WeiboOauthToken oauthToken);
+    WeiboUser getWeiboUserInfo(WeiboOauthToken oauthToken);
 
 }

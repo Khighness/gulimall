@@ -118,7 +118,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     public SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException {
         SkuItemVo skuItemVo = new SkuItemVo();
 
-        // 异步编排i
+        // 🚀 异步编排
         // 分为5个任务
         // 任务1先完成，任务3、4、5需要等待任务1的结果
         // 任务2可以再开一个异步任务单独执行

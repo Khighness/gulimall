@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @email parakovo@gmail.com
  * @since 2021-09-25 10:42:52
  */
-@SpringBootApplication
-@EnableTransactionManagement
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "top.parak.gulimall.member.feign")
+@EnableTransactionManagement
+@SpringBootApplication
 public class GulimallMemberApplication {
     public static void main(String[] args) {
         SpringApplication.run(GulimallMemberApplication.class, args);

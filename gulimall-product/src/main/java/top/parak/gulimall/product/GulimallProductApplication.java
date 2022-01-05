@@ -27,10 +27,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 public class GulimallProductApplication {
     public static void main(String[] args) {
-        SpringApplication gulimallProductApplication = new SpringApplicationBuilder(GulimallProductApplication.class)
+        new SpringApplicationBuilder(GulimallProductApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .bannerMode(Banner.Mode.CONSOLE)
-                .application();
-        ConfigurableApplicationContext applicationContext = gulimallProductApplication.run(args);
+                .application()
+                .run(args);
     }
 }

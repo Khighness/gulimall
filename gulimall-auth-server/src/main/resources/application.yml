@@ -60,4 +60,11 @@ oauth:
     access-path: /oauth2/token
     grant_type: authorization_code
 
-
+  weibo:
+    client-id: 3706179644
+    client-secret: 519b947619e441a20244aac929892ed7
+    authorize-url: https://api.weibo.com/oauth2/authorize
+    redirect-url: http://auth.gulimall.com/oauth2.0/weibo/success
+    access-host: https://api.weibo.com
+    access-path: /oauth2/access_token
+    grant_type: authorization_code

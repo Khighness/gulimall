@@ -1,6 +1,6 @@
 🧚 User: ${user.name}
-🚀 Operating System: ${os.name}-${os.arch}
-💠 Java: ${java.version}-${java.vendor}
+💻 Operating System: ${os.name}-${os.arch}
+☕ Java: ${java.version}-${java.vendor}
 🍃 Spring Boot: ${spring-boot.version}
 
 ██╗  ██╗██╗  ██╗██╗ ██████╗ ██╗  ██╗███╗   ██╗███████╗███████╗███████╗

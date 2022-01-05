@@ -630,7 +630,6 @@
 					<div class="box-btns-one">
 						<input type="text" name="" id="productNum" value="1"/>
 						<div class="box-btns-one1">
-
 							<div>
 								<button id="jia">
 									+
@@ -641,13 +640,12 @@
 									-
 								</button>
 							</div>
-
 						</div>
 					</div>
 
 					<div class="box-btns-two"
 						 th:if="${item.seckillSkuVo == null }">
-						<a class="addToCart" href="http://cart.gulimall.com/addToCart" th:attr="skuId=${item.info.skuId}">
+						<a id="addToCart" th:attr="skuId=${item.info.skuId}">
 							加入购物车
 						</a>
 					</div>
@@ -1323,38 +1321,47 @@
 
 <script>
 
-	// 商品详情：实现点击同一spu下的sku实现页面跳转
 	$(".sku_attr_value").click(function () {
-		// 1. 点击的元素先添加自定义的属性，为了识别我们是刚才被点击的
-		let skus = new Array();
-		let curr = $(this).attr("skus").split(",");
-
-		// 当前被点击的所以sku组合数组放进去
-		skus.push(curr);
-		// 去掉同一行的所以的checked
+		var skus = [];
+		// 1.获取所有加了checked的属性
+		// 点击的元素加上自定义属性
+		$(this).addClass("clicked");
+		var curr = $(this).attr("skus").split(",");
+		// 当前被点击的所有sku组合的数组放进去
+		skus.push(curr)
+		// 去掉同一行所有的checked
 		$(this).parent().parent().find(".sku_attr_value").removeClass("checked");
 
 		$("a[class='sku_attr_value checked']").each(function () {
 			skus.push($(this).attr("skus").split(","));
 		});
 
-		// 2. 取出交集，得到skuid
-		let filterEle = skus[0];
-		for (let i = 1; i < skus.length; i++) {
-			filterEle = $(filterEle).filter(skus[i])[0];
+		// 2. 取出他们的交集，得到skuId
+		// 调用filter方法的一定是jQuery元素
+		var filterEle = skus[0];
+		for(var i = 1; i< skus.length;i ++){
+			filterEle = $(filterEle).filter(skus[i]);
 		}
 
 		// 3. 跳转页面
-		location.href = "http://item.gulimall.com/" + filterEle + ".html";
+		location.href = "http://item.gulimall.com/" + filterEle[0] + ".html";
 	});
 
-	$(".addToCart").click(function () {
+	// 属性的回显
+	$(function () {
+		$(".sku_attr_value").parent().css({"border":"solid 1px #CCC"});
+		$("a[class='sku_attr_value checked']").parent().css({"border":"solid 1px red"});
+	})
+
+	// 添加到购物车
+	$("#addToCart").click(function () {
 		let skuId = $(this).attr("skuId");
 		let num = $("#productNum").val();
-		location.href = "http://cart.gulimall.com/addCartItem?skuId=" + skuId + "&num=" + num;
+		location.href = "http://cart.gulimall.com/addToCart?skuId=" + skuId + "&num=" + num;
 		return false;
 	});
 
+	// 秒杀
 	$(".seckill").click(function () {
 		var isLogin = [[${session.loginUser != null}]];     //true
 		if (isLogin) {

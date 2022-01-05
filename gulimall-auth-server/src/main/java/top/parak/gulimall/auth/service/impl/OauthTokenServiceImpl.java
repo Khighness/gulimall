@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import top.parak.gulimall.auth.oauth.AbstractOauthProperties;
+import top.parak.gulimall.auth.oauth.WeiboOauthProperties;
 import top.parak.gulimall.auth.service.OauthTokenService;
 
 /**
@@ -30,6 +31,10 @@ public class OauthTokenServiceImpl implements OauthTokenService {
                 .append("&client_secret=").append(properties.getClientSecret())
                 .append("&grant_type=").append(properties.getGrantType())
                 .append("&code=").append(code);
+
+        if (properties instanceof WeiboOauthProperties) {
+            accessTokenUrl.append("&redirect_uri=").append(properties.getRedirectUrl());
+        }
 
         // 构建请求头
         HttpHeaders httpHeaders = new HttpHeaders();
