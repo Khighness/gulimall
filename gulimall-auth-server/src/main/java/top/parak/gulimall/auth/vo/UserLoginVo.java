@@ -3,9 +3,10 @@ package top.parak.gulimall.auth.vo;
 import lombok.Data;
 
 /**
+ * 用户登录信息
+ *
  * @author KHighness
  * @since 2021-12-29
- * @apiNote 用户登录信息
  * @email parakovo@gmail.com
  */
 @Data

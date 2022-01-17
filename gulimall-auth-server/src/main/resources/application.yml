@@ -33,7 +33,7 @@ spring:
       namespace: gulimall:session
     timeout: 6000
 
-  # Thymeleaf
+# Thymeleaf
   thymeleaf:
     encoding: UTF-8
     enabled: true

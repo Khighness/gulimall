@@ -4,6 +4,7 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+# Spring
 spring:
 
 # Nacos
@@ -13,6 +14,7 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.117.155:8848
+
 # Json
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -34,6 +36,20 @@ spring:
       max-evictable-idle-time-millis: 900000
       validation-query: SELECT 1 FROM DUAL
 
+# RabbitMQ
+  rabbitmq:
+    host: 192.168.117.155
+    port: 5672
+    username: parak
+    password: KAG1823
+    virtual-host: /gulimall
+    publisher-confirm-type: correlated
+    template:
+      mandatory: true
+    listener:
+      direct:
+        acknowledge-mode: manual
+
 # MybatisPlus
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
@@ -45,7 +61,21 @@ mybatis-plus:
     db-config:
       id-type: auto
 
-# Log
+# Custom
 logging:
   level:
     top.parak.gulimall.ware.dao: debug
+
+# Gulimall
+gulimall:
+
+# RabbitMQ
+  rabbitmq:
+    stock:
+      event-exchange: stock-event-exchange
+      ttl: 60000
+      delay-queue: stock.delay.queue
+      lock-stock-routing-key: stock.loacked
+      dead-queue: stock.release.stock.queue
+      release-stock-routing-key: stock.release.#
+

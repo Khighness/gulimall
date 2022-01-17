@@ -15,10 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 阿里云短信服务
+ *
  * @author KHighness
  * @since 2021-12-28
  * @email parakovo@gmail.com
- * @apiNote 阿里云短信服务
  */
 @Component
 @ConfigurationProperties(prefix = "spring.cloud.alicloud.sms")

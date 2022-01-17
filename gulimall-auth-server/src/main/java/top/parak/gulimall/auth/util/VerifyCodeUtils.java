@@ -3,10 +3,11 @@ package top.parak.gulimall.auth.util;
 import java.util.Random;
 
 /**
+ * 验证码工具类
+ *
  * @author KHighness
  * @since 2021-12-28
  * @email parakovo@gmail.com
- * @apiNote 验证码工具类
  */
 public class VerifyCodeUtils {
 

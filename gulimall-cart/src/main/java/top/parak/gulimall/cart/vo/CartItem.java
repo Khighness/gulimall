@@ -6,11 +6,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
+ * 购物项
+ * 计算属性需要重写{@code get() }方法
+ *
  * @author KHighness
  * @since 2022-01-02
  * @email parakovo@gmail.com
- * @apiNote 购物项
- * <br> 需要计算的属性需要重写{@code get() }方法
  */
 @Data
 public class CartItem {

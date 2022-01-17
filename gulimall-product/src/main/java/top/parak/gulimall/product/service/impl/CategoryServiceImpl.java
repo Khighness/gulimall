@@ -207,15 +207,15 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                 // 所以这里使用lua脚本保证原子性
                 // KEYS[1]: key「catalog-json-lock」
                 // ARGV[1]: value「lockValue, uuid」
-                String script =
+                String luaScript =
                         "if redis.call('get', KEYS[1]) == ARGV[1] then" +
-                        "    return redis.call('del', KEYS[1]);" +
+                        "    return redis.call('del', KEYS[1])" +
                         "else" +
-                        "    return 0;" +
-                        "end;";
+                        "    return 0" +
+                        "end";
 
-                // 执行脚本，(script, keys, args)
-                stringRedisTemplate.execute(new DefaultRedisScript<Long>(script, Long.class),
+                // 执行脚本，(luaScript, keys, args)
+                stringRedisTemplate.execute(new DefaultRedisScript<Long>(luaScript, Long.class),
                         Collections.singletonList("CatalogJson-lock"), uuid);
             }
 
@@ -300,15 +300,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                     List<Catelog2Vo> catelog2Vos = null;
                     if (!CollectionUtils.isEmpty(level2Categories)) {
                         catelog2Vos = level2Categories.stream().map(catalog2 -> {
-                            Catelog2Vo catelog2Vo = new Catelog2Vo(catalog1.getCatId().toString(), null, catalog2.getCatId().toString(), catalog2.getName());
+                            Catelog2Vo catelog2Vo = new Catelog2Vo(catalog1.getCatId().toString(),
+                                    null, catalog2.getCatId().toString(), catalog2.getName());
 
                             // 3.2 查询二级分类下的三级分类
-                            List<CategoryEntity> level3Categories = getByParentCid(categoryEntities, catalog2.getCatId());
+                            List<CategoryEntity> level3Categories = getByParentCid(categoryEntities,
+                                    catalog2.getCatId());
 
                             // 3.3 封装数据
                             if (!CollectionUtils.isEmpty(level3Categories)) {
                                 List<Catelog2Vo.Catelog3Vo> catelog3Vos = level3Categories.stream()
-                                        .map(catalog3 -> new Catelog2Vo.Catelog3Vo(catalog2.getCatId().toString(), catalog3.getCatId().toString(), catalog3.getName()))
+                                        .map(catalog3 -> new Catelog2Vo.Catelog3Vo(catalog2.getCatId().toString(),
+                                                catalog3.getCatId().toString(), catalog3.getName()))
                                         .collect(Collectors.toList());
 
                                 catelog2Vo.setCatalog3List(catelog3Vos);

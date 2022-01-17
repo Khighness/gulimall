@@ -6,10 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * @author KHighness
- * @since 2021-11-10
- * @email parakovo@gmail.com
- * @apiNote ElasticSearch存储模型
+ * ElasticSearch存储模型
  * <pre>
  * {@code
  * PUT gulimall_product
@@ -75,6 +72,10 @@ import java.util.List;
  * }
  * }
  * </pre>
+ *
+ * @author KHighness
+ * @since 2021-11-10
+ * @email parakovo@gmail.com
  */
 @Data
 public class SkuEsModel {

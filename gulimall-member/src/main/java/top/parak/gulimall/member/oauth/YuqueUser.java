@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author KHighness
- * @since 2021-12-30
- * @email parakovo@gmail.com
- * @apiNote 语雀用户建模
+ * 语雀用户建模
  * <pre>
  * curl -H "X-Auth-Token: ${token}" https://www.yuque.com/api/v2/user
  * <br>
@@ -32,6 +29,10 @@ import lombok.NoArgsConstructor;
  *        }
  * }
  * </pre>
+ *
+ * @author KHighness
+ * @since 2021-12-30
+ * @email parakovo@gmail.com
  */
 @Data
 @NoArgsConstructor

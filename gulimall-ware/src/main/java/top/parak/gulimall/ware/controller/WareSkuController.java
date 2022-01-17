@@ -7,11 +7,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import top.parak.gulimall.common.exception.BizCodeEnum;
 import top.parak.gulimall.ware.entity.WareSkuEntity;
+import top.parak.gulimall.common.exception.NoStockException;
 import top.parak.gulimall.ware.service.WareSkuService;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.R;
 import top.parak.gulimall.common.to.SkuHasStockVo;
+import top.parak.gulimall.ware.vo.WareSkuLockVo;
 
 
 /**
@@ -39,6 +42,19 @@ public class WareSkuController {
     }
 
     /**
+     * 为订单锁定库存
+     */
+    @PostMapping("/lock/order")
+    public R orderLockStock(@RequestBody WareSkuLockVo wareSkuLockVo) {
+        try {
+            Boolean result = wareSkuService.orderLockStock(wareSkuLockVo);
+            return R.ok();
+        } catch (NoStockException e) {
+            return R.error(BizCodeEnum.NO_STOCK_EXCEPTION.getCode(), BizCodeEnum.NO_STOCK_EXCEPTION.getMessage());
+        }
+    }
+
+    /**
      * 列表
      */
     @RequestMapping("/list")
@@ -48,7 +64,6 @@ public class WareSkuController {
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息

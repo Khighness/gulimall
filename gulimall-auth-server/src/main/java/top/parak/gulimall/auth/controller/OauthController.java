@@ -30,16 +30,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author KHighness
- * @since 2021-12-26
- * @email parakovo@gmail.com
- * @apiNote 第三方认证
+ * 第三方认证
  * <p><p><b>步骤</b>
  * <ol>
  * <li>请求用户的第三方应用身份 </li>
  * <li>用户被第三方应用重定向回Gulimall </li>
  * <li>使用访问令牌访问第三方应用API </li>
  * </ol>
+ *
+ * @author KHighness
+ * @since 2021-12-26
+ * @email parakovo@gmail.com
  */
 @Slf4j
 @Controller
@@ -134,7 +135,7 @@ public class OauthController {
      * <li>会员服务 curl https://api.weibo.com/2/users/show.json?access_token=${access_token}&uid=${uid}</li>
      * </ol>
      *
-     * @see <a href="https://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6">Yuque Oauth Doc</a>
+     * @see <a href="https://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6">Weibo Oauth Wiki</a>
      */
     @GetMapping("/oauth2.0/weibo/success")
     public Object weiboAuthorize(@RequestParam("code") String code, HttpSession session) throws Exception {
@@ -156,6 +157,20 @@ public class OauthController {
         }
 
         return handleAuthorizationError(session, errors, AuthServerConstant.SOCIAL_PLATFORM_WEIBO, code);
+    }
+
+    /**
+     * 退出登录
+     */
+    @GetMapping("/logout")
+    public String login(HttpSession session) {
+        MemberResponseVo member = (MemberResponseVo) session.getAttribute(AuthServerConstant.LOGIN_USER);
+        if (!ObjectUtils.isEmpty(member)) {
+            log.info("用户下线：[{}]", member.getUsername());
+        }
+
+        session.invalidate();
+        return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;
     }
 
     /**
@@ -189,13 +204,13 @@ public class OauthController {
                 //  2. 序列化： JSON-serialization
 
                 session.setAttribute(AuthServerConstant.LOGIN_USER, memberResponseVo);
-                return GulimallPageConstant.REDIRECT_INDEX;
+                return GulimallPageConstant.REDIRECT + GulimallPageConstant.INDEX_PAGE;
             } else {
                 log.info("{} OAuth 登录失败，code：[{}]", socialPlatform, code);
 
                 errors.put("msg", socialPlatform + "登录失败，请重试");
                 session.setAttribute("errors", errors);
-                return GulimallPageConstant.REDIRECT_LOGIN;
+                return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;
             }
         }
 
@@ -212,7 +227,7 @@ public class OauthController {
 
         errors.put("msg", socialPlatform + "授权失败，请重试");
         session.setAttribute("errors", errors);
-        return GulimallPageConstant.REDIRECT_LOGIN;
+        return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;
     }
 
 }

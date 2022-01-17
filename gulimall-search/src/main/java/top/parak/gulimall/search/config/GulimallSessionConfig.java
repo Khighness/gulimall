@@ -8,6 +8,8 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 /**
+ * 分布式Session配置
+ *
  * @author KHighness
  * @since 2022-01-01
  * @email parakovo@gmail.com

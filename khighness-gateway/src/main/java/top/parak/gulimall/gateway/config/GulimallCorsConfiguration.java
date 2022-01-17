@@ -7,10 +7,11 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 /**
+ * 跨域配置
+ *
  * @author KHighness
  * @since 2021-10-10
  * @email parakovo@gmial.com
- * @apiNote 跨域配置
  */
 @Configuration
 public class GulimallCorsConfiguration {

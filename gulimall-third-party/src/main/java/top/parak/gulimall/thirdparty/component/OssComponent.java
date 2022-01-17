@@ -9,10 +9,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
+ * 阿里云对象存储
+ *
  * @author KHighness
  * @since 2021-12-31
  * @email parakovo@gmail.com
- * @apiNote 阿里云对象存储
  */
 @Component
 @ConfigurationProperties(prefix = "spring.cloud.alicloud.oss")

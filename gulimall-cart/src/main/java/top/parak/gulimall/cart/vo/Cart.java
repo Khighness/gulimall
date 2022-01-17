@@ -4,11 +4,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
+ * 购物车
+ * 需要计算的属性需要重写{@code get() }方法
+ *
  * @author KHighness
  * @since 2022-01-02
  * @email parakovo@gmail.com
- * @apiNote 购物车
- * <br> 需要计算的属性需要重写{@code get() }方法
  */
 public class Cart {
 
@@ -70,7 +71,9 @@ public class Cart {
         // 1. 计算购物项总价
         if (items != null && items.size() > 0) {
             for (CartItem item : items) {
-                amount = amount.add(item.getTotalPrice());
+                if (item.getCheck()) {
+                    amount = amount.add(item.getTotalPrice());
+                }
             }
         }
         // 2. 减去优惠价

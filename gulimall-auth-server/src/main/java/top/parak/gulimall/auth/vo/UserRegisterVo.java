@@ -7,10 +7,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 /**
+ * 用户注册信息
+ *
  * @author KHighness
  * @since 2021-12-28
  * @email parakovo@gmail.com
- * @apiNote 用户注册信息
  */
 @Data
 public class UserRegisterVo {

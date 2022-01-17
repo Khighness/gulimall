@@ -4,6 +4,7 @@ import top.parak.gulimall.cart.vo.Cart;
 import top.parak.gulimall.cart.vo.CartItem;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -65,5 +66,11 @@ public interface CartService {
      * @return 总金额
      */
     BigDecimal toTrade() throws ExecutionException, InterruptedException;
+
+    /**
+     * 获取用户选中的购物项
+     * @return 选中购物项列表
+     */
+    List<CartItem> getUserCartItems();
 
 }

@@ -4,6 +4,7 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+# Spring
 spring:
 
 # Nacos
@@ -30,6 +31,40 @@ spring:
       max-evictable-idle-time-millis: 900000
       validation-query: SELECT 1 FROM DUAL
 
+# RabbitMQ
+  rabbitmq:
+    host: 192.168.117.155
+    port: 5672
+    username: parak
+    password: KAG1823
+    virtual-host: /gulimall
+    publisher-confirm-type: correlated
+    template:
+      mandatory: true
+    listener:
+      direct:
+        acknowledge-mode: manual
+
+# Redis
+  redis:
+    host: 192.168.117.155
+    port: 6379
+    database: 0
+    password: KAG1823
+
+# Session
+  session:
+    store-type: redis
+    redis:
+      namespace: gulimall:session
+    timeout: 6000
+
+# Thymeleaf
+  thymeleaf:
+    encoding: UTF-8
+    enabled: true
+    cache: false
+
 # MybatisPlus
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
@@ -41,3 +76,26 @@ mybatis-plus:
     db-config:
       id-type: auto
 
+# Custom
+gulimall:
+
+# Thread
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10
+
+# RabbitMQ
+  rabbitmq:
+    order:
+      event-exchange: order-event-exchange
+      ttl: 60000
+      # 订单延迟队列
+      delay-queue: order.delay.queue
+      create-order-routing-key: order.create.order
+      # 订单死信队列
+      dead-queue: order.release.order.queue
+      release-order-routing-key: order.release.order
+      # 解锁库存队列
+      other-queue: stock.release.stock.queue
+      release-other-routing-key: order.release.other.#

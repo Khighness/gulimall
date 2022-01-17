@@ -1,10 +1,7 @@
 package top.parak.gulimall.common.exception;
 
 /**
- * @author KHighness
- * @since 2021-10-13
- * @email parakovo@gmail.com
- * @apiNote 业务状态码
+ * 业务状态码
  * <ul>
  * <li>10XXX: 通用</li>
  * <li>11XXX: 商品</li>
@@ -12,7 +9,12 @@ package top.parak.gulimall.common.exception;
  * <li>13XXX: 购物车</li>
  * <li>14XXX: 物流</li>
  * <li>15XXX: 用户</li>
+ * <li>21XXX: 库存</li>
  * </ul>
+ *
+ * @author KHighness
+ * @since 2021-10-13
+ * @email parakovo@gmail.com
  */
 public enum BizCodeEnum {
 
@@ -23,9 +25,10 @@ public enum BizCodeEnum {
     SMS_COD_SEND_EXCEPTION(10004, "短信发送失败"),
     USER_EXISTED_EXCEPTION(15001, "用户名已存在"),
     PHONE_REGISTERED_EXCEPTION(15002, "手机号已注册"),
-    LOGIN_ACCOUNT_OR_PASSWORD_EXCEPTION(15002, "账号或者密码错误"),
-    SOCIAL_USER_LOGIN_EXCEPTION(15002, "社交账号登录失败"),
-    PRODUCT_UP_EXCEPTION(11000, "商品上架异常");
+    LOGIN_ACCOUNT_OR_PASSWORD_EXCEPTION(15003, "账号或者密码错误"),
+    SOCIAL_USER_LOGIN_EXCEPTION(15004, "社交账号登录失败"),
+    PRODUCT_UP_EXCEPTION(11000, "商品上架异常"),
+    NO_STOCK_EXCEPTION(21000, "商品库存不足");
 
 
     private Integer code;

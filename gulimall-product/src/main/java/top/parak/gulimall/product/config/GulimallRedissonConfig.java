@@ -9,10 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 /**
+ * Redisson配置
+ *
  * @author KHighness
  * @since 2021-12-12
  * @email parakovo@gmail.com
- * @apiNote Redisson配置
  */
 @Configuration
 public class GulimallRedissonConfig {

@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 
 /**
@@ -188,6 +189,29 @@ public class CartServiceImpl implements CartService {
         BigDecimal amount = getCart().getTotalAmount();
         redisTemplate.delete(getCartKey());
         return amount;
+    }
+
+    @Override
+    public List<CartItem> getUserCartItems() {
+        String cartKey = getCartKey();
+        if (cartKey.startsWith(CartConstant.CACHE_CART_PREFIX + CartConstant.CACHE_CART_VISITOR_PREFIX)) {
+            return null;
+        }
+        List<CartItem> cartItems = getCartItems(cartKey);
+        List<CartItem> checkItems = cartItems.stream().filter(CartItem::getCheck)
+                .map(item -> {
+                    // 查询最新价格
+                    try {
+                        R r = productFeignService.getPrice(item.getSkuId());
+                        String price = (String) r.get("data");
+                        item.setPrice(new BigDecimal(price));
+                    } catch (Exception e) {
+                        log.warn("远程查询商品价格失败：[商品服务可能未启动]");
+                    }
+                    return item;
+                })
+                .collect(Collectors.toList());
+        return checkItems;
     }
 
     /**

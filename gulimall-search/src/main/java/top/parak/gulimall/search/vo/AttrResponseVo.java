@@ -3,10 +3,11 @@ package top.parak.gulimall.search.vo;
 import lombok.Data;
 
 /**
+ * 属性
+ *
  * @author KHighness
  * @since 2021-12-17
  * @email parakovo@gmail.com
- * @apiNote 属性VO
  */
 @Data
 public class AttrResponseVo {

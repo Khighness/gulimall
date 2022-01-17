@@ -3,10 +3,11 @@ package top.parak.gulimall.auth.oauth;
 import lombok.Data;
 
 /**
+ * OAuth配置抽象类
+ *
  * @author KHighness
  * @since 2021-12-30
  * @email parakovo@gmail.com
- * @apiNote OAuth配置抽象类
  */
 @Data
 public abstract class AbstractOauthProperties  {

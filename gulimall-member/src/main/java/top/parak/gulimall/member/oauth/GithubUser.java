@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author KHighness
- * @since 2021-12-30
- * @email parakovo@gmail.com
- * @apiNote Github用户建模
+ * Github用户建模
  * <pre>
  * curl -H "Authorization: token ${access_token}" https://api.github.com/user
  * <br>
@@ -47,6 +44,10 @@ import lombok.NoArgsConstructor;
  *   "updated_at": "2021-12-27T09:56:20Z"
  * }
  * </pre>
+ *
+ * @author KHighness
+ * @since 2021-12-30
+ * @email parakovo@gmail.com
  */
 @Data
 @NoArgsConstructor

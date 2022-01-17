@@ -46,3 +46,5 @@ windows系统，修改配置文件`C:\Windows\System32\drivers\etc\hosts`，添�
 运行`GulimallSsoServerTestApplication`和`GulimallSsoClientTestApplication`
 
 访问：http://client1.com:15001/song?username=Khighness
+
+重定向到登录页面后，用户名和密码都是`Khighness`。

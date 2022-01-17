@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 检索结果
+ *
  * @author KHighness
  * @since 2021-12-13
  * @email parakovo@gmail.com
- * @apiNote 检索结果
  */
 @Data
 public class SearchResult {

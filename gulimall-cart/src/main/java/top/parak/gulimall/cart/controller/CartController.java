@@ -14,6 +14,7 @@ import top.parak.gulimall.cart.vo.CartItem;
 import top.parak.gulimall.common.cosntant.GulimallPageConstant;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -75,7 +76,7 @@ public class CartController {
     public String checkItem(@RequestParam("skuId") Long skuId, @RequestParam("check") Integer check) {
         cartService.checkItem(skuId, check);
 
-        return GulimallPageConstant.REDIRECT_CART;
+        return GulimallPageConstant.REDIRECT + GulimallPageConstant.CART_PAGE;
     }
 
     /**
@@ -85,7 +86,7 @@ public class CartController {
     public String countItem(@RequestParam("skuId") Long skuId, @RequestParam("num") Integer num) {
         cartService.changeItemCount(skuId, num);
 
-        return GulimallPageConstant.REDIRECT_CART;
+        return GulimallPageConstant.REDIRECT + GulimallPageConstant.CART_PAGE;
     }
 
     /**
@@ -95,7 +96,7 @@ public class CartController {
     public String deleteItem(@RequestParam("skuId") Long skuId) {
         cartService.deleteItem(skuId);
 
-        return GulimallPageConstant.REDIRECT_CART;
+        return GulimallPageConstant.REDIRECT + GulimallPageConstant.CART_PAGE;
     }
 
     /**
@@ -107,6 +108,12 @@ public class CartController {
         BigDecimal amount = cartService.toTrade();
 
         return "结算成功，共：￥" + amount.toString();
+    }
+
+    @ResponseBody
+    @GetMapping("/currentUserCartItems")
+    public List<CartItem> getCurrentUserCartItems() {
+        return cartService.getUserCartItems();
     }
 
 }

@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
  * @since 2022-01-01
  * @email parakovo@gmail.com
  */
-@Component
-@ConfigurationProperties(prefix = "es")
-@Data
-public class GulimallElasticSearchProperties {
-
-    private String host;
-
-    private Integer port;
-
-    private String schema;
-
-}
+//@Component
+//@ConfigurationProperties(prefix = "es")
+//@Data
+//public class GulimallElasticSearchProperties {
+//
+//    private String host;
+//
+//    private Integer port;
+//
+//    private String schema;
+//
+//}

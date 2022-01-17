@@ -6,6 +6,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import top.parak.gulimall.cart.interceptor.CartInterceptor;
 
 /**
+ * Web配置
+ *
  * @author KHighness
  * @since 2022-01-03
  * @email parakovo@gmail.com

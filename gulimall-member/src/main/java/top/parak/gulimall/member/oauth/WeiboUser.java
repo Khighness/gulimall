@@ -4,10 +4,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 微博信息建模
+ *
  * @author KHighness
  * @since 2021-12-30
  * @email parakovo@gmail.com
- * @apiNote 微博信息建模
  */
 @Data
 @NoArgsConstructor

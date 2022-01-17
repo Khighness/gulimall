@@ -1,5 +1,6 @@
 package top.parak.gulimall.cart.interceptor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -17,12 +18,14 @@ import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 /**
+ * 购物车拦截器
+ *
  * @author KHighness
  * @since 2022-01-03
  * @email parakovo@gmail.com
- * @apiNote 判断用户状态
  */
 @Component
+@Slf4j
 public class CartInterceptor implements HandlerInterceptor {
 
     /**
@@ -36,6 +39,9 @@ public class CartInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
+        log.info("Client [IP: {}, Port: {}, URI: {}]",
+                request.getRemoteHost(), request.getRemotePort(), request.getRequestURI());
+
         UserInfoTo userInfoTo = new UserInfoTo();
 
         HttpSession session = request.getSession();

@@ -236,7 +236,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     }
 
     /**
-     * <b>Feign的调用流程</b>
+     * <b> NOTE Feign的调用流程 </b>
      * <ol>
      * <li> 构造请求数据，将对象转为json
      * <pre> {@code
@@ -339,8 +339,12 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         } else {
             // 远程调用失败
             // TODO: 重复调用，接口幂等性
-
         }
+    }
+
+    @Override
+    public SpuInfoEntity getSpuInfoBySkuId(Long skuId) {
+        return getById(skuInfoService.getById(skuId).getSpuId());
     }
 
 }

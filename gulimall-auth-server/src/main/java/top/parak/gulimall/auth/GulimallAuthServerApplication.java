@@ -14,8 +14,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * @author KHighness
  * @since 2021-12-26
  * @email parakovo@gmail.com
- * @apiNote spring session principle
- * <br>
+ * @apiNote
+ * <b> NOTE spring session 原理 </b> <br>
  * 1. EnableRedisHttpSession给容器中导入了RedisHttpSessionConfiguration          「Redis存储Session自动排名配置类」<br>
  * 2. RedisHttpSessionConfiguration给容器中注册了RedisOperationSessionRepository「封装Redis对Session的增删改查操作」<br>
  * 3. RedisOperationSessionRepository继承了SpringHttpSessionConfiguration     「Spring原生的Session自动配置」<br>

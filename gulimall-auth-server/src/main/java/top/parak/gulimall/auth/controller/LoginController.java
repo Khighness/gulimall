@@ -52,7 +52,7 @@ public class LoginController {
         if (ObjectUtils.isEmpty(loginUser)) {
             return "login";
         } else {
-            return GulimallPageConstant.REDIRECT_INDEX;
+            return GulimallPageConstant.REDIRECT + GulimallPageConstant.INDEX_PAGE;
         }
     }
 
@@ -83,6 +83,7 @@ public class LoginController {
                         BizCodeEnum.SMS_CODE_EXCEPTION.getMessage());
             }
         }
+
         // 生成验证码
         String code = VerifyCodeUtils.generateCode();
         String codeValue = VerifyCodeUtils.generateCode() + "_" + System.currentTimeMillis();
@@ -116,7 +117,7 @@ public class LoginController {
             log.warn("用户[用户名：{}，手机号：{}] 注册失败：{}", registerVo.getUsername(), registerVo.getPhone(), errors);
 
             // 2.2 重定向到注册页
-            return GulimallPageConstant.REDIRECT_REGISTER;
+            return GulimallPageConstant.REDIRECT + GulimallPageConstant.REGISTER_PAGE;
         } else {
             // 3.1 JSR303校验通过，判断验证码
             String key = AuthServerConstant.SMS_CODE_CACHE_PREFIX + registerVo.getPhone();
@@ -132,21 +133,21 @@ public class LoginController {
                     // 注册成功，重定向到登录页面
                     log.info("用户[用户名：{}，手机号：{}] 注册成功", registerVo.getUsername(), registerVo.getPhone());
 
-                    return GulimallPageConstant.REDIRECT_LOGIN;
+                    return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;
                 } else {
                     // 注册失败，返回注册页面显示错误信息
                     String msg = (String) r.get("msg");
                     errors.put("msg", msg);
 
                     attributes.addFlashAttribute("errors", errors);
-                    return GulimallPageConstant.REDIRECT_REGISTER;
+                    return GulimallPageConstant.REDIRECT + GulimallPageConstant.REGISTER_PAGE;
                 }
             } else {
                 // 3.3.1 验证码校验失败
                 errors.put("code", "验证码错误");
                 attributes.addFlashAttribute("errors", errors);
 
-                return GulimallPageConstant.REDIRECT_REGISTER;
+                return GulimallPageConstant.REDIRECT + GulimallPageConstant.REGISTER_PAGE;
             }
         }
     }
@@ -161,9 +162,14 @@ public class LoginController {
     @PostMapping("/login")
     public String login(UserLoginVo loginVo, RedirectAttributes attributes, HttpSession session) {
         // 1. 远程调用会员服务进行登录
-        R r = memberFeignService.login(loginVo);
+        R r = null;
+        try {
+            r = memberFeignService.login(loginVo);
+        } catch (Exception e) {
+            log.warn("调用会员服务进行登录失败：[会员服务可能未启动]");
+        }
 
-        if (r.getCode() == 0) {
+        if (!ObjectUtils.isEmpty(r) && r.getCode() == 0) {
             // 2。 登录成功 -> 商城首页
             String json = JSON.toJSONString(r.get("memberEntity"));
             MemberResponseVo memberResponseVo = JSON.parseObject(json, new TypeReference<MemberResponseVo>() { });
@@ -171,7 +177,7 @@ public class LoginController {
             log.info("用户[用户名：{}，手机号：{}] 账号登录成功", memberResponseVo.getUsername(), memberResponseVo.getMobile());
 
             session.setAttribute(AuthServerConstant.LOGIN_USER, memberResponseVo);
-            return GulimallPageConstant.REDIRECT_INDEX;
+            return GulimallPageConstant.REDIRECT + GulimallPageConstant.INDEX_PAGE;
         } else {
             // 3. 登录失败 -> 登录页面
             log.warn("用户[账户：{}] 账号登录失败", loginVo.getLoginAccount());
@@ -181,7 +187,7 @@ public class LoginController {
             errors.put("msg", msg);
 
             attributes.addFlashAttribute("errors", errors);
-            return GulimallPageConstant.REDIRECT_LOGIN;
+            return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;
         }
     }
 

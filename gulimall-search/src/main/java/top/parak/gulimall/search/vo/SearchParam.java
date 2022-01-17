@@ -5,10 +5,11 @@ import lombok.Data;
 import java.util.List;
 
 /**
+ * 查询条件
+ *
  * @author KHighness
  * @since 2021-12-13
  * @email parakovo@gmail.com
- * @apiNote 查询条件
  */
 @Data
 public class SearchParam {

@@ -3,18 +3,15 @@ package top.parak.gulimall.ware.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import top.parak.gulimall.ware.entity.WareInfoEntity;
 import top.parak.gulimall.ware.service.WareInfoService;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.R;
-
+import top.parak.gulimall.ware.vo.FareVo;
 
 /**
  * 仓库信息
@@ -25,9 +22,20 @@ import top.parak.gulimall.common.utils.R;
  */
 @RestController
 @RequestMapping("ware/wareinfo")
+@Slf4j
 public class WareInfoController {
     @Autowired
     private WareInfoService wareInfoService;
+
+    /**
+     * 获取运费
+     */
+    @GetMapping("/fare/{addrId}")
+    public R getFare(@PathVariable("addrId") Long addrId) {
+        FareVo fareVo = wareInfoService.getFare(addrId);
+
+        return R.ok().setData(fareVo);
+    }
 
     /**
      * 列表

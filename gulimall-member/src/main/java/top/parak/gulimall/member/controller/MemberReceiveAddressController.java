@@ -1,14 +1,12 @@
 package top.parak.gulimall.member.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import top.parak.gulimall.member.entity.MemberReceiveAddressEntity;
 import top.parak.gulimall.member.service.MemberReceiveAddressService;
@@ -25,9 +23,15 @@ import top.parak.gulimall.common.utils.R;
  */
 @RestController
 @RequestMapping("member/memberreceiveaddress")
+@Slf4j
 public class MemberReceiveAddressController {
     @Autowired
     private MemberReceiveAddressService memberReceiveAddressService;
+
+    @GetMapping("/{memberId}/addresses")
+    public List<MemberReceiveAddressEntity> getAddress(@PathVariable("memberId") Long memberId) {
+        return memberReceiveAddressService.getAddress(memberId);
+    }
 
     /**
      * 列表

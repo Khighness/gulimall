@@ -10,10 +10,11 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
+ * 缓存配置
+ *
  * @author KHighness
  * @since 2021-12-13
  * @email parakovo@gmail.com
- * @apiNote 缓存配置
  */
 @EnableConfigurationProperties(CacheProperties.class)
 @Configuration

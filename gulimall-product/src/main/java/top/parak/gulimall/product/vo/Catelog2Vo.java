@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
+ * 二级分类
+ *
  * @author KHighness
  * @since 2021-12-10
  * @email parakovo@gmail.com
- * @apiNote 二级分类VO
  */
 @AllArgsConstructor
 @NoArgsConstructor

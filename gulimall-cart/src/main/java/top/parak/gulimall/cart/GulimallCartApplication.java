@@ -15,7 +15,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * @email parakovo@gmail.com
  */
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = "top.parak.gulimall.cart.feign")
 @EnableRedisHttpSession
 @SpringBootApplication(
         exclude = { DataSourceAutoConfiguration.class }
