@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableRabbit
 @EnableRedisHttpSession
 @EnableTransactionManagement
-@MapperScan("top.parak.gulimall.order.dao")
 @SpringBootApplication
 public class GulimallOrderApplication {
     public static void main(String[] args) {

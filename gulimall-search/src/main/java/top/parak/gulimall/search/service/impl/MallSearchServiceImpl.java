@@ -26,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import top.parak.gulimall.common.cosntant.GulimallPageConstant;
 import top.parak.gulimall.common.to.es.SkuEsModel;
 import top.parak.gulimall.common.utils.R;
 import top.parak.gulimall.search.vo.BrandVo;
@@ -39,6 +40,9 @@ import top.parak.gulimall.search.vo.SearchParam;
 
 import java.io.*;
 import java.net.URLEncoder;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,7 +55,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class MallSearchServiceImpl implements MallSearchService {
-    public static final String SEARCH_LINK = "http://search.gulimall.com/list.html";
 
     @Autowired
     private RestHighLevelClient client;
@@ -83,13 +86,13 @@ public class MallSearchServiceImpl implements MallSearchService {
 
     /**
      * 构建检索请求
-     * <ul>
+     * <ol>
      * <li>模拟匹配</li>
      * <li>过滤条件（属性、分类、品牌、库存、价格区间）</li>
      * <li>排序分页</li>
      * <li>结果高亮</li>
      * <li>聚合分析</li>
-     * </ul>
+     * </ol>
      * @param searchParam 检索参数
      * @return 检索请求
      */
@@ -199,25 +202,9 @@ public class MallSearchServiceImpl implements MallSearchService {
         sourceBuilder.aggregation(nestedAggregationBuilder);
 
         log.info("构建DSL: {}", sourceBuilder.toString());
-//        // 记录查询DSL到文件
-//        File file = new File(System.getProperty("user.dir") + "/gulimall-search/src/main/resources/json/" +
-//                System.currentTimeMillis() + "-dsl.json");
-//        try {
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//            FileChannel channel = new FileOutputStream(file).getChannel();
-//            ByteBuffer buffer = ByteBuffer.allocate(1024 * 8);
-//            buffer.put(sourceBuilder.toString().getBytes(StandardCharsets.UTF_8));
-//            buffer.flip();
-//            channel.write(buffer);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        writeDSLToFile(sourceBuilder.toString().getBytes(StandardCharsets.UTF_8));
 
-        SearchRequest searchRequest = new SearchRequest(new String[]{ EsConstant.PRODUCT_INDEX }, sourceBuilder);
-
-        return searchRequest;
+        return new SearchRequest(new String[]{ EsConstant.PRODUCT_INDEX }, sourceBuilder);
     }
 
     /**
@@ -355,7 +342,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 
                 // 6.4 设置面包屑跳转连接
                 String replaceQuery = replaceQueryString(searchParam.get_queryString(), "attrs", attr);
-                navVo.setLink(SEARCH_LINK + "?" + replaceQuery);
+                navVo.setLink(GulimallPageConstant.SEARCH_PAGE + "?" + replaceQuery);
 
                 return navVo;
             }).collect(Collectors.toList());
@@ -381,7 +368,7 @@ public class MallSearchServiceImpl implements MallSearchService {
                 }
 
                 navVo.setNavValue(builder.toString());
-                navVo.setLink(SEARCH_LINK + "?" + replaceQuery);
+                navVo.setLink(GulimallPageConstant.SEARCH_PAGE + "?" + replaceQuery);
             }
 
             List<SearchResult.NavVo> navs = searchResult.getNavs();
@@ -414,6 +401,27 @@ public class MallSearchServiceImpl implements MallSearchService {
 
         return queryStr.replace(key + "=" + urlValue, "")
                 .replace("&" + key + "=" + urlValue, "");
+    }
+
+    /**
+     * 记录查询DSL到文件
+     * @param content 字符数组
+     */
+    private void writeDSLToFile(byte[] content) {
+        File file = new File(System.getProperty("user.dir") + "/gulimall-search/src/main/resources/json/" +
+                System.currentTimeMillis() + "-dsl.json");
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileChannel channel = new FileOutputStream(file).getChannel();
+            ByteBuffer buffer = ByteBuffer.allocate(1024 * 8);
+            buffer.put(content);
+            buffer.flip();
+            channel.write(buffer);
+        } catch (IOException e) {
+            log.error("记录DSL到文件产生异常：{}", e.getMessage());
+        }
     }
 
 }

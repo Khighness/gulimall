@@ -11,7 +11,7 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
  * 分布式Session配置
  *
  * @author KHighness
- * @since 2021-01-05
+ * @since 2022-01-05
  * @email parakovo@gmail.com
  */
 @Configuration

@@ -76,4 +76,3 @@ spring:
           uri: lb://gulimall-member
           predicates:
             - Host=member.gulimall.com
-

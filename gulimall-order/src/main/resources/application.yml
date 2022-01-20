@@ -7,6 +7,10 @@ server:
 # Spring
 spring:
 
+# MVC
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+
 # Nacos
   application:
     name: gulimall-order
@@ -99,3 +103,12 @@ gulimall:
       # 解锁库存队列
       other-queue: stock.release.stock.queue
       release-other-routing-key: order.release.other.#
+
+# AliPay
+  alipay:
+    app-id: 2021000119601155
+    notify-url: http://jbaksd.natappfree.cc/payed/notify
+    return-url: http://member.gulimall.com/memberOrder.html
+    sign-type: RSA2
+    charset: utf-8
+    timeout: 15m

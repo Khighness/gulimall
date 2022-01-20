@@ -15,6 +15,8 @@ public class GulimallPageConstant {
 
     public static final String REGISTER_PAGE = "http://auth.gulimall.com/reg.html";
 
+    public static final String SEARCH_PAGE = "http://search.gulimall.com/list.html";
+
     public static final String CART_PAGE = "http://cart.gulimall.com/cart.html";
 
     public static final String ORDER_PAGE = "http://order.gulimall.com/toTrade";

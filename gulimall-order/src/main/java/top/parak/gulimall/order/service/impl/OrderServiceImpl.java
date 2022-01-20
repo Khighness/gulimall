@@ -41,13 +41,17 @@ import top.parak.gulimall.order.config.GulimallRabbitConfig;
 import top.parak.gulimall.order.dao.OrderDao;
 import top.parak.gulimall.order.entity.OrderEntity;
 import top.parak.gulimall.order.entity.OrderItemEntity;
+import top.parak.gulimall.order.entity.PaymentInfoEntity;
 import top.parak.gulimall.order.feign.CartFeignService;
 import top.parak.gulimall.order.feign.MemberFeignService;
 import top.parak.gulimall.order.feign.ProductFeignService;
 import top.parak.gulimall.order.feign.WareFeignService;
 import top.parak.gulimall.order.interceptor.LoginUserInterceptor;
+import top.parak.gulimall.order.pay.PayAsyncVo;
+import top.parak.gulimall.order.pay.PayVo;
 import top.parak.gulimall.order.service.OrderItemService;
 import top.parak.gulimall.order.service.OrderService;
+import top.parak.gulimall.order.service.PaymentInfoService;
 import top.parak.gulimall.order.to.OrderCreateTo;
 import top.parak.gulimall.order.vo.*;
 
@@ -89,6 +93,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
 
     @Autowired
     private GulimallRabbitConfig.GulimallRabbitOrderProperties rabbitOrderProperties;
+
+    @Autowired
+    private PaymentInfoService paymentInfoService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -291,6 +298,73 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 // TODO: 发送失败，进行重试
             }
         }
+    }
+
+    @Override
+    public PayVo getOrderPay(String orderSn) {
+        OrderEntity order = this.getOrderByOrderSn(orderSn);
+        BigDecimal payAmount = order.getPayAmount().setScale(2, BigDecimal.ROUND_UP);
+        List<OrderItemEntity> list = orderItemService.list(
+                new QueryWrapper<OrderItemEntity>()
+                        .eq("order_sn", orderSn)
+        );
+        OrderItemEntity orderItemEntity = list.get(0);
+
+        PayVo payVo = new PayVo();
+        payVo.setOut_trade_no(orderSn);
+        payVo.setTotal_amount(payAmount.toString());
+        payVo.setSubject(orderItemEntity.getSkuName());
+        payVo.setBody(orderItemEntity.getSkuAttrsVals());
+
+        return payVo;
+    }
+
+    @Override
+    public PageUtils queryPageWithItem(Map<String, Object> params) {
+        MemberResponseVo memberResponseVo = LoginUserInterceptor.threadLocal.get();
+        IPage<OrderEntity> page = this.page(
+                new Query<OrderEntity>().getPage(params),
+                new QueryWrapper<OrderEntity>()
+                        .eq("member_id", memberResponseVo.getId())
+                        .orderByDesc("id")
+        );
+
+        List<OrderEntity> list = page.getRecords().stream().peek(order -> {
+            List<OrderItemEntity> itemEntities = orderItemService.list(
+                    new QueryWrapper<OrderItemEntity>()
+                            .eq("order_sn", order.getOrderSn())
+            );
+            order.setItemEntities(itemEntities);
+        }).collect(Collectors.toList());
+        page.setRecords(list);
+
+        return new PageUtils(page);
+    }
+
+    @Override
+    public String handlePayResult(PayAsyncVo payAsyncVo) {
+        // 1. 保持交易流水数据
+        PaymentInfoEntity paymentInfoEntity = new PaymentInfoEntity();
+        paymentInfoEntity.setAlipayTradeNo(payAsyncVo.getTrade_no());
+        paymentInfoEntity.setOrderSn(payAsyncVo.getOut_trade_no());
+        paymentInfoEntity.setPaymentStatus(payAsyncVo.getTrade_status());
+        paymentInfoEntity.setCallbackTime(payAsyncVo.getNotify_time());
+        paymentInfoEntity.setSubject(payAsyncVo.getSubject());
+        paymentInfoEntity.setTotalAmount(new BigDecimal(payAsyncVo.getTotal_amount()));
+        paymentInfoEntity.setCreateTime(payAsyncVo.getGmt_create());
+        paymentInfoService.save(paymentInfoEntity);
+
+        // 2. 修改订单状态信息
+        // TRADE_SUCCESS   商户签约的产品支持退款功能的前提下，买家付款成功
+        // TRADE_FINISHED  商户签约的产品不支持退款功能的前提下，买家付款成功
+        // 或者，商户签约的产品支持退款功能的前提下，交易已经并且超过可退款期限
+        if (payAsyncVo.getTrade_status().equals("TRADE_SUCCESS")
+                || payAsyncVo.getTrade_status().equals("TRADE_FINISHED")) {
+            String orderSn = payAsyncVo.getOut_trade_no();
+            this.baseMapper.updateOrderStatus(orderSn, OrderStatusEnum.PAYED.getCode());
+        }
+
+        return "success";
     }
 
     /**

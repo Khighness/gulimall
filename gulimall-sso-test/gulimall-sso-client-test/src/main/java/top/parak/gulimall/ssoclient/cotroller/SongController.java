@@ -34,7 +34,7 @@ public class SongController {
     private RestTemplate restTemplate;
 
     /**
-     * sayHello，无需登录
+     * hello，无需登录
      * @see <a href="http://client1.com:15001/hello?username=Khighness">hello</a>
      */
     @ResponseBody

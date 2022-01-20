@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 /**
+ * 组件注册配置
+ *
  * @author KHighness
  * @since 2021-12-29
  * @email parakovo@gmail.com

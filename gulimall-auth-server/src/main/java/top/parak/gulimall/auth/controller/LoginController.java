@@ -182,9 +182,13 @@ public class LoginController {
             // 3. 登录失败 -> 登录页面
             log.warn("用户[账户：{}] 账号登录失败", loginVo.getLoginAccount());
 
-            String msg = (String) r.get("msg");
             Map<String, String> errors = new HashMap<>();
-            errors.put("msg", msg);
+            String msg = null;
+            if (!ObjectUtils.isEmpty(r)) {
+                errors.put("msg", (String) r.get("msg"));
+            } else {
+                errors.put("msg", "登录失败");
+            }
 
             attributes.addFlashAttribute("errors", errors);
             return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;

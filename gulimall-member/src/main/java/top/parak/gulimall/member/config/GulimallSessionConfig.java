@@ -1,4 +1,4 @@
-package top.parak.gulimall.order.config;
+package top.parak.gulimall.member.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
  * 分布式Session配置
  *
  * @author KHighness
- * @since 2022-01-09
+ * @since 2022-01-19
  * @email parakovo@gmail.com
  */
 @Configuration

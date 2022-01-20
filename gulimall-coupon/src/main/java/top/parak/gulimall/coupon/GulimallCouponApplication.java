@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableDiscoveryClient
 @EnableTransactionManagement
-@MapperScan("top.parak.gulimall.coupon.dao")
 @SpringBootApplication
 public class GulimallCouponApplication {
     public static void main(String[] args) {

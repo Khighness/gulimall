@@ -26,7 +26,9 @@ gulimall
 
 
 
-### 阿里云服务
+### 服务提供
 
-- [OSS](https://oss.console.aliyun.com/overview)
-- [SMS](https://market.aliyun.com/products/57126001/cmapi00039729.html?spm=5176.12818093.ProductAndService--ali--widget-home-product-recent.dfa2.18ee16d0mJ6DOc#sku=yuncode3372900001)
+- 对象存储：[OSS](https://oss.console.aliyun.com/overview)
+- 短信服务：[SMS](https://market.aliyun.com/products/57126001/cmapi00039729.html)
+- 在线支付：[PAY](https://opendocs.alipay.com/common/02kkv7)
+- 内网穿透：[NAT](https://natapp.cn)

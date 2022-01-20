@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * 线程池配置
  *
  * @author KHighness
- * @since 2021-01-03
+ * @since 2022-01-03
  * @email parakovo@gmail.com
  */
 @Configuration
