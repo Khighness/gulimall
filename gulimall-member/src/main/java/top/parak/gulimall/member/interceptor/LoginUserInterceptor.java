@@ -26,7 +26,7 @@ public class LoginUserInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("Client [IP: {}, Port: {}, URI: {}]",
+        log.info("【请求拦截】 Client [IP: {}, Port: {}, URI: {}]",
                 request.getRemoteHost(), request.getRemotePort(), request.getRequestURI());
 
         String uri = request.getRequestURI();
@@ -39,12 +39,12 @@ public class LoginUserInterceptor implements HandlerInterceptor {
         MemberResponseVo loginUser = (MemberResponseVo) session.getAttribute(AuthServerConstant.LOGIN_USER);
         if (!ObjectUtils.isEmpty(loginUser)) {
             threadLocal.set(loginUser);
-            log.info("User logged in, interceptor passed.");
+            log.debug("User logged in, interceptor passed.");
             return true;
         }
 
         session.setAttribute("msg", AuthServerConstant.NOT_LOGIN_MESSAGE);
-        log.warn("User is not logged in, redirect to the login page.");
+        log.debug("User is not logged in, redirect to the login page.");
 
         response.sendRedirect(GulimallPageConstant.LOGIN_PAGE);
         return false;

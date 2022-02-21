@@ -1,6 +1,7 @@
 package top.parak.gulimall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.parak.gulimall.common.to.mq.SeckillOrderTo;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.order.entity.OrderEntity;
 import top.parak.gulimall.order.pay.PayAsyncVo;
@@ -69,6 +70,12 @@ public interface OrderService extends IService<OrderEntity> {
      * @return 处理结果
      */
     String handlePayResult(PayAsyncVo payAsyncVo);
+
+    /**
+     * 创建秒杀订单
+     * @param seckillOrderTo 秒杀订单
+     */
+    void createSSeckillOrder(SeckillOrderTo seckillOrderTo);
 
 }
 

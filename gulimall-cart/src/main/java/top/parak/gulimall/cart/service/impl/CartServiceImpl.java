@@ -128,7 +128,7 @@ public class CartServiceImpl implements CartService {
 
             // 1.1 如果临时购物车的数据还没有合并，那么合并用户购物车和游客购物车
             if (!CollectionUtils.isEmpty(cartItems)) {
-                log.info("用户[{}]的购物车已合并", userInfoTo.getUsername());
+                log.info("【购物车】 用户[{}]的购物车已合并", userInfoTo.getUsername());
                 for (CartItem item : cartItems) {
                     addToCart(item.getSkuId(), item.getCount());
                 }
@@ -206,7 +206,7 @@ public class CartServiceImpl implements CartService {
                         String price = (String) r.get("data");
                         item.setPrice(new BigDecimal(price));
                     } catch (Exception e) {
-                        log.warn("远程查询商品价格失败：[商品服务可能未启动]");
+                        log.error("【远程调用】 远程查询商品价格失败：[商品服务可能未启动或者已宕机]");
                     }
                     return item;
                 })

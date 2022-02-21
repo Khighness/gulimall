@@ -1,4 +1,4 @@
-package top.parak.gulimall.order.listen;
+package top.parak.gulimall.order.listener;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class OrderCloseListener {
 
     @RabbitHandler
     public void listenToOrder(OrderEntity orderEntity, Channel channel, Message message) throws IOException {
-        log.info("订单过期 => 关闭订单：{}", orderEntity);
+        log.info("【消息队列】 订单过期 => 关闭订单：{}", orderEntity);
         try {
             orderService.closeOrder(orderEntity);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

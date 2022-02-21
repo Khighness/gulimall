@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/item/scss/jd.css"/>
 	<link rel="stylesheet" href="/static/item/scss/header.css"/>
 	<link rel="stylesheet" type="text/css" href="/static/item/bootstrap/css/bootstrap.css"/>
+	<script type="text/javascript" src="/static/layer/layer.js"></script>
 </head>
 <body>
 <div id="max">
@@ -514,7 +515,6 @@
 							<span th:text="${#numbers.formatDecimal(item.info.price,3,2)}">4499.00</span>
 						</li>
 						<li style="color: red" th:if="${item.seckillSkuVo != null}">
-
                             <span th:if="${#dates.createNow().getTime() < item.seckillSkuVo.startTime}">
                                 商品将会在[[${#dates.format(new java.util.Date(item.seckillSkuVo.startTime),"yyyy-MM-dd HH:mm:ss")}]]进行秒杀
                             </span>
@@ -522,7 +522,6 @@
 							<span th:if="${#dates.createNow().getTime() >= item.seckillSkuVo.startTime && #dates.createNow().getTime() <= item.seckillSkuVo.endTime}">
                                 秒杀价  [[${#numbers.formatDecimal(item.seckillSkuVo.seckillPrice,1,2)}]]
                             </span>
-
 						</li>
 						<li>
 							<a href="/static/item/">
@@ -1363,14 +1362,14 @@
 
 	// 秒杀
 	$(".seckill").click(function () {
-		var isLogin = [[${session.loginUser != null}]];     //true
+		var isLogin = [[${session.loginUser != null}]];
 		if (isLogin) {
 			var killId = $(this).attr("sessionid") + "-" + $(this).attr("skuid");
 			var code = $(this).attr("code");
 			var num = $("#productNum").val();
 			location.href = "http://seckill.gulimall.com/kill?killId=" + killId + "&key=" + code + "&num=" + num;
 		} else {
-			alert("秒杀请先登录");
+			layer.msg("请先登录")
 		}
 		return false;
 	});

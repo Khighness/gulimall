@@ -78,7 +78,7 @@ public class LoginController {
             String[] values = value.split("_");
             long deltaTime = System.currentTimeMillis() - Long.parseLong(values[1]);
             if (deltaTime < 60_000) {
-                log.warn("注册验证码请求频繁，手机号：[{}]，间隔时间：[{}ms]", phone, deltaTime);
+                log.warn("【请求频繁】 注册验证码请求频繁，手机号：[{}]，间隔时间：[{}ms]", phone, deltaTime);
                 return R.error(BizCodeEnum.SMS_CODE_EXCEPTION.getCode(),
                         BizCodeEnum.SMS_CODE_EXCEPTION.getMessage());
             }
@@ -90,7 +90,7 @@ public class LoginController {
 
         // 存入redis
         stringRedisTemplate.opsForValue().set(key, codeValue, 10, TimeUnit.MINUTES);
-        log.info("发送手机注册验证码, 手机号: [{}], 验证码: [{}]", phone, code);
+        log.info("【用户注册】 发送手机注册验证码, 手机号: [{}], 验证码: [{}]", phone, code);
 
         return thirdPartFeignService.sendCode(phone, code);
     }
@@ -114,7 +114,7 @@ public class LoginController {
                 attributes.addFlashAttribute("errors", errors);
             });
 
-            log.warn("用户[用户名：{}，手机号：{}] 注册失败：{}", registerVo.getUsername(), registerVo.getPhone(), errors);
+            log.warn("【用户注册】用户[用户名：{}，手机号：{}] 注册失败：{}", registerVo.getUsername(), registerVo.getPhone(), errors);
 
             // 2.2 重定向到注册页
             return GulimallPageConstant.REDIRECT + GulimallPageConstant.REGISTER_PAGE;
@@ -131,7 +131,7 @@ public class LoginController {
                 R r = memberFeignService.register(registerVo);
                 if (r.getCode() == 0) {
                     // 注册成功，重定向到登录页面
-                    log.info("用户[用户名：{}，手机号：{}] 注册成功", registerVo.getUsername(), registerVo.getPhone());
+                    log.info("【用户注册】 用户[用户名：{}，手机号：{}] 注册成功", registerVo.getUsername(), registerVo.getPhone());
 
                     return GulimallPageConstant.REDIRECT + GulimallPageConstant.LOGIN_PAGE;
                 } else {
@@ -166,7 +166,7 @@ public class LoginController {
         try {
             r = memberFeignService.login(loginVo);
         } catch (Exception e) {
-            log.warn("调用会员服务进行登录失败：[会员服务可能未启动]");
+            log.error("【远程调用】 调用会员服务进行登录失败：[会员服务可能未启动或者已宕机]");
         }
 
         if (!ObjectUtils.isEmpty(r) && r.getCode() == 0) {
@@ -174,13 +174,13 @@ public class LoginController {
             String json = JSON.toJSONString(r.get("memberEntity"));
             MemberResponseVo memberResponseVo = JSON.parseObject(json, new TypeReference<MemberResponseVo>() { });
 
-            log.info("用户[用户名：{}，手机号：{}] 账号登录成功", memberResponseVo.getUsername(), memberResponseVo.getMobile());
+            log.info("【账号登录】用户[用户名：{}，手机号：{}] 账号登录成功", memberResponseVo.getUsername(), memberResponseVo.getMobile());
 
             session.setAttribute(AuthServerConstant.LOGIN_USER, memberResponseVo);
             return GulimallPageConstant.REDIRECT + GulimallPageConstant.INDEX_PAGE;
         } else {
             // 3. 登录失败 -> 登录页面
-            log.warn("用户[账户：{}] 账号登录失败", loginVo.getLoginAccount());
+            log.warn("【账号登录】用户[账户：{}] 账号登录失败", loginVo.getLoginAccount());
 
             Map<String, String> errors = new HashMap<>();
             String msg = null;

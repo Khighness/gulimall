@@ -59,9 +59,9 @@ public class GulimallAmqpConfig {
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {
             String id = correlationData != null ? correlationData.getId() : "null";
             if (ack) {
-                log.info("message [id={}] arrived broker succeed", id);
+                log.info("【消息队列】 message [id={}] arrived broker succeed", id);
             } else {
-                log.warn("message [id={}] arrived broker failed, cause: [{}]", id, cause);
+                log.warn("【消息队列】 message [id={}] arrived broker failed, cause: [{}]", id, cause);
             }
         }
 
@@ -95,7 +95,7 @@ public class GulimallAmqpConfig {
          */
         @Override
         public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-            log.warn("message [id={}, exchange={}, routingKey={},] arrived queue failed, detail [reply code: {}, reply text: {}]",
+            log.warn("【消息队列】 message [id={}, exchange={}, routingKey={},] arrived queue failed, detail [reply code: {}, reply text: {}]",
                     message.getMessageProperties().getCorrelationId(), exchange, routingKey, replyCode, replyText);
         }
 

@@ -21,7 +21,8 @@ gulimall
     ├───gulimall-coupon       🧊 积分服务
     ├───gulimall-search       🔍 检索服务
     ├───gulimall-sso-test     ⭕ 单点登录
-    └───gulimall-cart         🚛 购物车服务
+    ├───gulimall-cart         🚛 购物车服务
+    └───gulimall-seckill      ⚔️ 秒杀服务
 ```
 
 

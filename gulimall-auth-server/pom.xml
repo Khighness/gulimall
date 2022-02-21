@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>gulimall-auth-server</artifactId>
-    <description>谷粒商城- 认证中心</description>
+    <description>谷粒商城—认证中心</description>
 
 
     <!-- Version Management -->

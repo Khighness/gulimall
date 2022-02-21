@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Controller
 public class LoginController {
-    private static final String CACHE_TOKEN_PREFIX = "sso:token:";
+    private static final String CACHE_TOKEN_PREFIX = "gulimall:sso:token:";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

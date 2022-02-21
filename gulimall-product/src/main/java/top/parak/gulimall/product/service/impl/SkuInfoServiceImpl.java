@@ -1,5 +1,6 @@
 package top.parak.gulimall.product.service.impl;
 
+import com.alibaba.fastjson.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +14,19 @@ import java.util.concurrent.ThreadPoolExecutor;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.Query;
 
+import top.parak.gulimall.common.utils.R;
 import top.parak.gulimall.product.dao.SkuInfoDao;
 import top.parak.gulimall.product.entity.SkuImagesEntity;
 import top.parak.gulimall.product.entity.SkuInfoEntity;
 import top.parak.gulimall.product.entity.SpuInfoDescEntity;
+import top.parak.gulimall.product.feign.SeckillFeignService;
 import top.parak.gulimall.product.service.*;
+import top.parak.gulimall.product.vo.SeckillSkuVo;
 import top.parak.gulimall.product.vo.SkuItemVo;
 
 /**
@@ -45,6 +50,9 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
+
+    @Autowired
+    private SeckillFeignService seckillFeignService;
 
     @Autowired
     private ThreadPoolExecutor executor;
@@ -150,12 +158,29 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
         // 5. 获取SPU的规格参数信息
         CompletableFuture<Void> groupAttrsFuture = infoFuture.thenAcceptAsync((info) -> {
-            List<SkuItemVo.SpuItemAttrGroupVo> groupAttrs = attrGroupService.getAttrGroupWithAttrsBySpuId(info.getSpuId(), info.getCatalogId());
+            List<SkuItemVo.SpuItemAttrGroupVo> groupAttrs = attrGroupService
+                    .getAttrGroupWithAttrsBySpuId(info.getSpuId(), info.getCatalogId());
             skuItemVo.setGroupAttrs(groupAttrs);
         }, executor);
 
-        // 6. 等待所有任务都完成
-        CompletableFuture.allOf(imageFuture, saleAttrFuture, descFuture, groupAttrsFuture).get();
+        // 6. 插叙当前SKU是否参与秒杀
+        CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
+            try {
+                R r = seckillFeignService.getSkuSeckillInfo(skuId);
+                if (r.getCode() == 0) {
+                    SeckillSkuVo seckillSkuVo = r.getData(new TypeReference<SeckillSkuVo>() { });
+                    long current = System.currentTimeMillis();
+                    if (!ObjectUtils.isEmpty(seckillSkuVo) && current < seckillSkuVo.getEndTime()) {
+                        skuItemVo.setSeckillSkuVo(seckillSkuVo);
+                    }
+                }
+            } catch (Exception e) {
+                log.error("【远程调用】 远程查询秒杀信息失败：[秒杀服务可能未启动或者已宕机]");
+            }
+        }, executor);
+
+        // 7. 等待所有任务都完成
+        CompletableFuture.allOf(imageFuture, saleAttrFuture, descFuture, groupAttrsFuture, seckillFuture).get();
 
         return skuItemVo;
     }

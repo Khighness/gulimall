@@ -84,7 +84,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         memberEntity.setLevelId(defaultLevel.getId());
         // 4. 保存用户信息
         this.save(memberEntity);
-        log.info("用户[用户名：{}，手机号：{}] 注册成功",
+        log.info("【用户注册】 用户[用户名：{}，手机号：{}] 注册成功",
                 memberEntity.getUsername(), memberEntity.getMobile());
     }
 
@@ -125,7 +125,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
             boolean matches = bCryptPasswordEncoder.matches(loginVo.getPassword(),
                     memberEntity.getPassword());
             if (matches) {
-                log.info("账号登录，用户信息：[用户名：{}，手机号：{}]",
+                log.info("【账号登录】 用户信息：[用户名：{}，手机号：{}]",
                         memberEntity.getUsername(), memberEntity.getMobile());
                 memberEntity.setPassword("");
                 return memberEntity;
@@ -185,7 +185,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
             }
 
             // 5. 自动注册用户
-            log.info("社交登录，自动注册：[用户名：{}，社交账号ID：{}]", username, socialUid);
+            log.info("【社交登录】 自动注册：[用户名：{}，社交账号ID：{}]", username, socialUid);
             memberEntity.setLevelId(memberLevelDao.getDefaultLevel().getId());
             memberEntity.setUsername(username);
             memberEntity.setCreateTime(new Date());
@@ -197,7 +197,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         }
         // 6. 社交账号已存在
         else {
-            log.info("社交登录，用户信息：[用户名：{}，社交账号ID：{}]", username, socialUid);
+            log.info("【社交登录】 用户信息：[用户名：{}，社交账号ID：{}]", username, socialUid);
 
             // 7. 更新Token
             MemberEntity updateInfo = new MemberEntity();

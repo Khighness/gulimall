@@ -1,6 +1,5 @@
 package top.parak.gulimall.ware.service.impl;
 
-
 import com.alibaba.fastjson.TypeReference;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -126,7 +125,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
                     wareSkuEntity.setSkuName((String) data.get("skuName"));
                 }
             } catch (Exception e) {
-                log.warn("远程查询SKU名字失败：[商品服务可能未启动]");
+                log.error("【远程调用】 远程查询SKU名字失败：[商品服务可能未启动或者已宕机]");
             }
 
             wareSkuEntity.setSkuName("");
@@ -217,7 +216,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
                     BeanUtils.copyProperties(wareOrderTaskDetailEntity, stockDetailTo);
                     stockLockedTo.setDetailTo(stockDetailTo);
 
-                    log.info("订单[订单号={}]成功锁定库存: {}", wareSkuLockVo.getOrderSn(), wareSkuLockVo.getLocks());
+                    log.info("【订单锁库】 订单[订单号={}]成功锁定库存: {}", wareSkuLockVo.getOrderSn(), wareSkuLockVo.getLocks());
                     rabbitTemplate.convertAndSend(rabbitStockProperties.getEventExchange(),
                             rabbitStockProperties.getLockStockRoutingKey(), stockLockedTo);
 
@@ -259,7 +258,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             try {
                 r = orderFeignService.getOrderStatus(orderSn);
             } catch (Exception e) {
-                log.warn("远程查询订单信息失败：[订单服务可能未启动]");
+                log.error("【远程调用】 远程查询订单信息失败：[订单服务可能未启动或者已宕机]");
                 throw new RuntimeException("远程查询订单信息失败");
             }
 

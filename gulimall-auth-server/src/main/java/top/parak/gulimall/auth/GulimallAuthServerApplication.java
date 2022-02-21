@@ -25,13 +25,13 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * 5.2 将原生的请求和响应使用装饰者模式进行包装 「request, response」 -> 「wrappedRequest, wrappedResponse」<br>
  * 5.3 wrappedRequest重写了{@code getSession() }方法，内部实现了自定义业务逻辑，从redis中获取，空则移除session，有则设置 <br>
  *
- * @see org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession
- * @see org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration
- * @see org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration
- * @see org.springframework.session.web.http.SessionRepositoryFilter#doFilterInternal
- * @see org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryRequestWrapper
- * @see org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryResponseWrapper
- * @see org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryRequestWrapper#getSession
+ * @see org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession        EnableRedisHttpSession
+ * @see org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration RedisHttpSessionConfiguration
+ * @see org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration           SpringHttpSessionConfiguration
+ * @see org.springframework.session.web.http.SessionRepositoryFilter#doFilterInternal                   doFilterInternal
+ * @see org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryRequestWrapper    SessionRepositoryRequestWrapper
+ * @see org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryResponseWrapper   SessionRepositoryResponseWrapper
+ * @see org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryRequestWrapper#getSession getSession
  */
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "top.parak.gulimall.auth.feign")

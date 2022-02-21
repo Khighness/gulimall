@@ -79,6 +79,16 @@ public class GulimallRabbitConfig {
          */
         private String releaseOtherRoutingKey;
 
+        /**
+         * 秒杀队列
+         */
+        private String seckillQueue;
+
+        /**
+         * 秒杀订单路由
+         */
+        private String seckillOrderRoutingKey;
+
     }
 
     @Autowired
@@ -107,6 +117,11 @@ public class GulimallRabbitConfig {
     }
 
     @Bean
+    public Queue orderSeckillQueue() {
+        return new Queue(rabbitOrderProperties.getSeckillQueue(), true, false, false);
+    }
+
+    @Bean
     public Binding orderCreateOrderBinding() {
         return new Binding(rabbitOrderProperties.getDelayQueue(), Binding.DestinationType.QUEUE,
                 rabbitOrderProperties.getEventExchange(), rabbitOrderProperties.getCreateOrderRoutingKey(),
@@ -124,6 +139,13 @@ public class GulimallRabbitConfig {
     public Binding orderReleaseOtherBinding() {
         return new Binding(rabbitOrderProperties.getOtherQueue(), Binding.DestinationType.QUEUE,
                 rabbitOrderProperties.getEventExchange(), rabbitOrderProperties.getReleaseOtherRoutingKey(),
+                null);
+    }
+
+    @Bean
+    public Binding orderSeckillQueueBinding() {
+        return new Binding(rabbitOrderProperties.getSeckillQueue(), Binding.DestinationType.QUEUE,
+                rabbitOrderProperties.getEventExchange(), rabbitOrderProperties.getSeckillOrderRoutingKey(),
                 null);
     }
 

@@ -1,4 +1,4 @@
-package top.parak.gulimall.order.listen;
+package top.parak.gulimall.order.listener;
 
 import com.alipay.api.internal.util.AlipaySignature;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,6 @@ import top.parak.gulimall.order.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -33,7 +32,7 @@ public class OrderPayedListener {
 
     @PostMapping("/payed/notify")
     public String handleAliPayed(PayAsyncVo payAsyncVo, HttpServletRequest request) throws Exception {
-        log.info("支付宝回调通知：{}", payAsyncVo);
+        log.info("【支付回调】 支付宝回调通知：{}", payAsyncVo);
 
         // 验证签名
         Map<String, String> params = new HashMap<>();

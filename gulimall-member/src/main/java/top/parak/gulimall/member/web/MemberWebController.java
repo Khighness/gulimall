@@ -34,7 +34,7 @@ public class MemberWebController {
             R r = orderFeignService.listWithItem(params);
             model.addAttribute("orders", r);
         } catch (Exception e) {
-            log.warn("远程查询用户订单信息失败：[订单服务可能未启动]");
+            log.error("【远程调用】 远程查询用户订单信息失败：[订单服务可能未启动或者已宕机]");
         }
 
         return "orderList";

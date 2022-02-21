@@ -91,13 +91,13 @@ public class SmsComponent {
 
         // 发送请求
         try {
-            log.info("发送手机验证码, 手机号: [{}], 验证码: [{}]", phone, code);
+            log.info("【验证码】 发送手机验证码, 手机号: [{}], 验证码: [{}]", phone, code);
             // 防止阿里云短信次数刷完，测试仅输出在控制台
 //            HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
-//            log.info("发送手机验证码, 手机号: [{}], 验证码: [{}], 结果: [{}]", phone, code,
+//            log.info("【验证码】 发送手机验证码, 手机号: [{}], 验证码: [{}], 结果: [{}]", phone, code,
 //                    EntityUtils.toString(response.getEntity()));
         } catch (Exception e) {
-            log.error("发送验证码失败, 手机号: [{}], 验证码: [{}]", phone, code, e);
+            log.warn("【验证码】发送验证码失败, 手机号: [{}], 验证码: [{}]", phone, code, e);
         }
     }
 

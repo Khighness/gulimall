@@ -34,7 +34,7 @@ public class StockReleaseListener {
     @RabbitHandler
     public void handleOrderClosedRelease(OrderTo orderTo, Message message, Channel channel)
             throws IOException {
-        log.info("订单关闭 => 解锁库存：{}", orderTo);
+        log.info("【消息队列】 订单关闭 => 解锁库存：{}", orderTo);
         try {
             wareSkuService.unlockStock(orderTo);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
@@ -49,7 +49,7 @@ public class StockReleaseListener {
     @RabbitHandler
     public void handleStockLockedRelease(StockLockedTo stockLockedTo, Message message, Channel channel)
             throws IOException {
-        log.info("业务回滚 => 解锁库存：{}", stockLockedTo);
+        log.info("【消息队列】 业务回滚 => 解锁库存：{}", stockLockedTo);
         try {
             wareSkuService.unlockStock(stockLockedTo);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

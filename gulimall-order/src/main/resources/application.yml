@@ -103,6 +103,9 @@ gulimall:
       # 解锁库存队列
       other-queue: stock.release.stock.queue
       release-other-routing-key: order.release.other.#
+      # 秒杀订单队列
+      seckill-queue: order.seckill.order.queue
+      seckill-order-routing-key: order.seckill.order
 
 # AliPay
   alipay:

@@ -10,7 +10,7 @@ public class AuthServerConstant {
     /**
      * Redis存储：手机验证码前缀
      */
-    public static final String SMS_CODE_CACHE_PREFIX = "sms:code:";
+    public static final String SMS_CODE_CACHE_PREFIX = "gulumall:sms:code:";
 
     /**
      * Session存储：登录用户信息

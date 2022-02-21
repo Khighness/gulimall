@@ -39,7 +39,7 @@ public class CartInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
-        log.info("Client [IP: {}, Port: {}, URI: {}]",
+        log.info("【请求拦截】 Client [IP: {}, Port: {}, URI: {}]",
                 request.getRemoteHost(), request.getRemotePort(), request.getRequestURI());
 
         UserInfoTo userInfoTo = new UserInfoTo();

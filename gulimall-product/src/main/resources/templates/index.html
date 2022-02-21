@@ -462,10 +462,11 @@
                             <input type="text" placeholder="游戏" style="margin-top: 15px;" />
                             <br />面值
                             <select name="" style="margin: 8px 0;">
-  																<option value="">面值</option>
-  																<option value="">面值</option>
-  																<option value="">面值</option>
-  															</select><span style="color: #C81623;">￥0.00</span>
+                                <option value="">面值</option>
+                                <option value="">面值</option>
+                                <option value="">面值</option>
+                            </select>
+                            <span style="color: #C81623;">￥0.00</span>
                             <p>
                               <input type="radio" name="a" style="width: 15px;vertical-align:middle;" />直充
                               <input type="radio" name="a" style="width: 15px;vertical-align:middle;" />卡密
@@ -520,7 +521,6 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <ul id="seckillSkuContent">
-
             </ul>
           </div>
           <div class="swiper-slide">
@@ -592,7 +592,7 @@
                   .append($("<img style='width: 130px; height: 130px;' src='" + item.skuInfoVo.skuDefaultImg + "'/>"))
                   .append($("<p>" + item.skuInfoVo.skuTitle + "</p>"))
                   .append($("<span>￥" + item.seckillPrice + "</span>"))
-                  .append($("<s>￥" + item.skuInfoVo.price + "</s>"))
+                  .append($("<s>￥" + item.skuInfoVo.price + "</s>"))S
                   .appendTo("#seckillSkuContent");
           })
       }

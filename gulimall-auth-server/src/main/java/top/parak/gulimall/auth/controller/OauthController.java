@@ -146,8 +146,6 @@ public class OauthController {
             WeiboOauthToken weiboOauthToken = JSON.parseObject(responseEntity.getBody(),
                     new TypeReference<WeiboOauthToken>() { });
 
-            log.info("{}", weiboOauthToken);
-
             String loginResult = handleSocialLogin(session, errors, weiboOauthToken, code,
                     AuthServerConstant.SOCIAL_PLATFORM_WEIBO);
 
@@ -166,7 +164,7 @@ public class OauthController {
     public String login(HttpSession session) {
         MemberResponseVo member = (MemberResponseVo) session.getAttribute(AuthServerConstant.LOGIN_USER);
         if (!ObjectUtils.isEmpty(member)) {
-            log.info("用户下线：[{}]", member.getUsername());
+            log.info("【退出登录】用户下线：[{}]", member.getUsername());
         }
 
         session.invalidate();
@@ -179,7 +177,7 @@ public class OauthController {
     private String handleSocialLogin(HttpSession session, Map<String, String> errors, AbstractOauthToken oauthToken,
                                      String code, String socialPlatform) {
         if (!ObjectUtils.isEmpty(oauthToken)) {
-            log.info("{} OAuth 授权成功，code：[{}]，access_token：[{}]",
+            log.info("【社交登录】 {} OAuth 授权成功，code：[{}]，access_token：[{}]",
                     socialPlatform, code, oauthToken.getAccessToken());
 
             R r = null;
@@ -196,17 +194,17 @@ public class OauthController {
                 MemberResponseVo memberResponseVo = JSON.parseObject(json,
                         new TypeReference<MemberResponseVo>() { });
 
-                log.info("用户[用户名：{}，社交账号ID：{}] 社交登录成功",
+                log.info("【社交登录】 用户[用户名：{}，社交账号ID：{}] 社交登录成功",
                         memberResponseVo.getUsername(), memberResponseVo.getSocialUid());
 
                 // redis存储分布式session
-                //  1. 作用域: .gulimall.com
+                //  1. 作用域: gulimall.com
                 //  2. 序列化： JSON-serialization
 
                 session.setAttribute(AuthServerConstant.LOGIN_USER, memberResponseVo);
                 return GulimallPageConstant.REDIRECT + GulimallPageConstant.INDEX_PAGE;
             } else {
-                log.info("{} OAuth 登录失败，code：[{}]", socialPlatform, code);
+                log.info("【社交登录】 {} OAuth 登录失败，code：[{}]", socialPlatform, code);
 
                 errors.put("msg", socialPlatform + "登录失败，请重试");
                 session.setAttribute("errors", errors);

@@ -7,6 +7,7 @@ import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ import top.parak.gulimall.common.cosntant.OrderConstant;
 import top.parak.gulimall.common.enume.OrderStatusEnum;
 import top.parak.gulimall.common.to.SkuHasStockVo;
 import top.parak.gulimall.common.to.mq.OrderTo;
+import top.parak.gulimall.common.to.mq.SeckillOrderTo;
 import top.parak.gulimall.common.utils.PageUtils;
 import top.parak.gulimall.common.utils.Query;
 
@@ -133,7 +135,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 List<MemberReceiveAddressVo> address = memberFeignService.getAddress(memberResponseVo.getId());
                 orderConfirmVo.setAddress(address);
             } catch (Exception e) {
-                log.warn("远程查询地址列表失败：[用户服务可能未启动]");
+                log.error("【远程调用】 远程查询地址列表失败：[用户服务可能未启动或者已宕机]");
             }
         }, executor);
 
@@ -145,7 +147,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 List<OrderItemVo> items = cartFeignService.getCurrentUserCartItems();
                 orderConfirmVo.setItems(items);
             } catch (Exception e) {
-                log.warn("远程查询购物项失败：[购物车服务可能未启动]");
+                log.error("【远程调用】 远程查询购物项失败：[购物车服务可能未启动或者已宕机]");
             }
         }, executor).thenRunAsync(() -> {
             // 查询是否有库存
@@ -249,7 +251,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                         return submitOrderResponseVo;
                     }
                 } catch (Exception e) {
-                    log.warn("远程锁定商品库存失败：[库存服务可能未启动]");
+                    log.warn("远程锁定商品库存失败：[库存服务可能未启动或者已宕机]");
                 }
 
                 // 走到这里，说明锁定库存失败
@@ -367,6 +369,52 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         return "success";
     }
 
+    @Override
+    public void createSSeckillOrder(SeckillOrderTo seckillOrderTo) {
+        // 1. 保存订单信息
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setOrderSn(seckillOrderTo.getOrderSn());
+        orderEntity.setMemberId(seckillOrderTo.getMemberId());
+        orderEntity.setTotalAmount(seckillOrderTo.getSeckillPrice());
+        orderEntity.setStatus(OrderStatusEnum.CREATE_NEW.getCode());
+        orderEntity.setCommentTime(new Date());
+        orderEntity.setPayType(1);
+        // TODO: more info to set
+        BigDecimal price = seckillOrderTo.getSeckillPrice().multiply(new BigDecimal(seckillOrderTo.getNum().toString()));
+        orderEntity.setPayAmount(price);
+        this.save(orderEntity);
+
+        // 2. 保存订单项信息
+        OrderItemEntity orderItemEntity = new OrderItemEntity();
+        orderItemEntity.setOrderSn(seckillOrderTo.getOrderSn());
+        orderItemEntity.setOrderId(orderEntity.getId());
+        orderItemEntity.setRealAmount(price);
+        orderItemEntity.setSkuQuantity(seckillOrderTo.getNum());
+
+        R r = null;
+        try {
+            r = productFeignService.getSpuInfoBySkuId(seckillOrderTo.getSkuId());
+        } catch (Exception e) {
+            log.error("【远程调用】 远程查询SPU信息失败：[商品服务可能未启动或者已宕机]");
+        }
+        if (ObjectUtils.isEmpty(r) || r.getCode() == 0) {
+            throw new RuntimeException("远程查询SPU信息失败");
+        }
+        SpuInfoVo spuInfoVo = r.getData(new TypeReference<SpuInfoVo>() { });
+
+        orderItemEntity.setSpuId(spuInfoVo.getId());
+        orderItemEntity.setSpuBrand(spuInfoVo.getBrandId().toString());
+        orderItemEntity.setSpuName(spuInfoVo.getSpuName());
+        orderItemEntity.setCategoryId(spuInfoVo.getCatalogId());
+        int growth = seckillOrderTo.getSeckillPrice().multiply(new BigDecimal(seckillOrderTo.getNum())).intValue();
+        orderItemEntity.setGiftGrowth(growth);
+        orderItemEntity.setGiftIntegration(growth);
+        orderItemEntity.setPromotionAmount(new BigDecimal("0.0"));
+        orderItemEntity.setCouponAmount(new BigDecimal("0.0"));
+        orderItemEntity.setIntegrationAmount(new BigDecimal("0.0"));
+        orderItemService.save(orderItemEntity);
+    }
+
     /**
      * 创建订单
      */
@@ -428,8 +476,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             r = null;
         }
         if (ObjectUtils.isEmpty(r)) {
-            log.warn("远程查询运费信息失败：[仓储服务可能未启动]");
-            throw new RuntimeException("远程查询运费信息失败");
+            log.error("【远程调用】 远程查询运费信息失败：[仓储服务可能未启动或者已宕机]");
+            throw new RuntimeException("【远程调用】 远程查询运费信息失败");
         }
 
         // 4. 设置订单状态
@@ -482,7 +530,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             r = null;
         }
         if (ObjectUtils.isEmpty(r)) {
-            log.warn("远程查询SPU信息失败：[商品服务可能未启动]");
+            log.error("【远程调用】 远程查询SPU信息失败：[商品服务可能未启动或者已宕机]");
             throw new RuntimeException("远程查询SPU信息失败");
         }
 

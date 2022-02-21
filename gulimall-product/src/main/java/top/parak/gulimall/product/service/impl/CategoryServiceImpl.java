@@ -126,7 +126,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                         .eq("parent_cid", 0)
         );
         // long e = System.currentTimeMillis();
-        // log.info("查询：一级分类，消耗：{}ms", e - s);
+        // log.info("【查询时间】 查询一级分类，消耗：{}ms", e - s);
 
         return categoryEntities;
     }
@@ -160,14 +160,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // 1. 查询缓存
         String catalogJson = ops.get("CatalogJson");
         if (StringUtils.isEmpty(catalogJson)) { // 缓存没有
-            log.info("「首页分类数据」未命中缓存，查询数据库");
+            log.info("【缓存未中】 「首页分类数据」未命中缓存，查询数据库");
             // 2. 查询数据库
             result = getCatalogJsonFromDB();
             // 3. 序列化json，存入缓存
             String json = JSON.toJSONString(result);
             ops.set("CatalogJson", json);
         } else { // 缓存命中
-            log.info("「首页分类数据」命中缓存");
+            log.info("【缓存命中】 「首页分类数据」命中缓存");
             // 4. json反序列化成对象
             result = JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catelog2Vo>>>() { });
         }

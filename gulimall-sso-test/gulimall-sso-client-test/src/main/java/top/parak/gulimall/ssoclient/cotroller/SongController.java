@@ -63,7 +63,7 @@ public class SongController {
             ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET,
                     new HttpEntity<>(new HttpHeaders()), String.class);
 
-            log.info("用户访问：{}", responseEntity.getBody());
+            log.info("【用户访问】 {}", responseEntity.getBody());
         }
         List<String> albums = Arrays.asList(
                 "Jay", "范特西", "八度空间", "叶惠美", "七里香",
