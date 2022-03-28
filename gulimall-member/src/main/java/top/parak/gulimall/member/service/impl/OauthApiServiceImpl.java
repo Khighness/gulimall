@@ -9,8 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-import org.springframework.util.MultiValueMap;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 import top.parak.gulimall.common.oauth.AbstractOauthToken;
@@ -24,8 +22,11 @@ import top.parak.gulimall.member.oauth.YuqueUser;
 import top.parak.gulimall.member.service.OauthApiService;
 
 /**
+ * OAuth服务
+ *
  * @author KHighness
  * @since 2021-12-30
+ * @email parakovo@gmail.com
  */
 @Service
 public class OauthApiServiceImpl implements OauthApiService {

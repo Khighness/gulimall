@@ -8,8 +8,11 @@ import top.parak.gulimall.member.oauth.WeiboUser;
 import top.parak.gulimall.member.oauth.YuqueUser;
 
 /**
+ * OAuth服务实现
+ *
  * @author KHighness
  * @since 2021-12-30
+ * @email parakovo@gmail.com
  */
 public interface OauthApiService {
 

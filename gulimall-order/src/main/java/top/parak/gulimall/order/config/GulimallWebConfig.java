@@ -21,7 +21,7 @@ public class GulimallWebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginUserInterceptor).addPathPatterns("/**");
+        // registry.addInterceptor(loginUserInterceptor).addPathPatterns("/**");
     }
 
 }
