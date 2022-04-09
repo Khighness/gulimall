@@ -31,7 +31,7 @@ public class OrderSeckillListener {
     public void listenToOrder(SeckillOrderTo seckillOrderTo, Channel channel, Message message) throws IOException {
         log.info("【消息队列】 秒杀成功 => 创建订单：{}", seckillOrderTo);
         try {
-            orderService.createSSeckillOrder(seckillOrderTo);
+            orderService.createSeckillOrder(seckillOrderTo);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } catch (Exception e) {
             // 出现异常，拒绝确认消息，重新放回队列

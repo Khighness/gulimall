@@ -216,7 +216,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             // 1. 创建订单
             OrderCreateTo order = createOrder();
 
-            // 2. 验价
+            // 2. 验证价格
             BigDecimal currentPayAmount = order.getOrder().getPayAmount();
             BigDecimal submitPayAmount= orderSubmitVo.getPayPrice();
             double deltaAmount = Math.abs(currentPayAmount.subtract(submitPayAmount).doubleValue());
@@ -370,7 +370,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     }
 
     @Override
-    public void createSSeckillOrder(SeckillOrderTo seckillOrderTo) {
+    public void createSeckillOrder(SeckillOrderTo seckillOrderTo) {
         // 1. 保存订单信息
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setOrderSn(seckillOrderTo.getOrderSn());
@@ -567,7 +567,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     }
 
     /**
-     * 验价
+     * 计算价格
      */
     private void computerPrice(OrderEntity orderEntity, List<OrderItemEntity> items) {
         // 订单应付总额

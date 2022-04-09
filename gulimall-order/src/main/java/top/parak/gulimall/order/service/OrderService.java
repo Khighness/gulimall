@@ -75,7 +75,7 @@ public interface OrderService extends IService<OrderEntity> {
      * 创建秒杀订单
      * @param seckillOrderTo 秒杀订单
      */
-    void createSSeckillOrder(SeckillOrderTo seckillOrderTo);
+    void createSeckillOrder(SeckillOrderTo seckillOrderTo);
 
 }
 
