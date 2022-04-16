@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>top.parak.gulimall.seckill.controller.SeckillController</OriginalElement>
+  <nodes>
+    <node x="319.0" y="332.5">top.parak.gulimall.seckill.scheduel.SeckillSkuScheduled</node>
+    <node x="282.0000000000001" y="102.0">top.parak.gulimall.seckill.service.SeckillService</node>
+    <node x="0.0" y="309.5">top.parak.gulimall.seckill.controller.SeckillController</node>
+    <node x="611.4825000000001" y="275.0">top.parak.gulimall.seckill.service.impl.SeckillServiceImpl</node>
+    <node x="872.4575" y="136.5">top.parak.gulimall.seckill.feign.CouponFeignService</node>
+    <node x="671.4575" y="136.5">top.parak.gulimall.seckill.feign.ProductFeignService</node>
+    <node x="448.2500000000001" y="0.0">top.parak.gulimall.seckill.to.SeckillSkuRedisTo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="top.parak.gulimall.seckill.service.impl.SeckillServiceImpl" target="top.parak.gulimall.seckill.service.SeckillService">
+      <point x="-147.60000000000002" y="-84.5" />
+      <point x="648.3824999999999" y="255.0" />
+      <point x="553.6666666666667" y="255.0" />
+      <point x="108.66666666666663" y="61.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="536.5" y="222.0" />
+  <SelectedNodes>
+    <node>top.parak.gulimall.seckill.controller.SeckillController</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

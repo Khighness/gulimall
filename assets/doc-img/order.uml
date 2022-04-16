@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>top.parak.gulimall.order.web.OrderWebController</OriginalElement>
+  <nodes>
+    <node x="1647.8625" y="92.0">top.parak.gulimall.order.feign.CartFeignService</node>
+    <node x="380.86249999999995" y="0.0">top.parak.gulimall.order.service.OrderService</node>
+    <node x="434.9999999999999" y="449.0">top.parak.gulimall.order.listener.OrderCloseListener</node>
+    <node x="1075.5791666666664" y="288.0">top.parak.gulimall.order.service.impl.OrderServiceImpl</node>
+    <node x="0.0" y="426.0">top.parak.gulimall.order.web.OrderWebController</node>
+    <node x="773.8625" y="92.0">top.parak.gulimall.order.feign.MemberFeignService</node>
+    <node x="1144.8625" y="69.0">top.parak.gulimall.order.feign.WareFeignService</node>
+    <node x="1419.8625" y="92.0">top.parak.gulimall.order.feign.ProductFeignService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="top.parak.gulimall.order.service.impl.OrderServiceImpl" target="top.parak.gulimall.order.feign.MemberFeignService">
+      <point x="-74.59999999999991" y="-188.0" />
+      <point x="1187.4791666666665" y="258.0" />
+      <point x="949.3625" y="258.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.service.impl.OrderServiceImpl" target="top.parak.gulimall.order.feign.CartFeignService">
+      <point x="149.20000000000005" y="-188.0" />
+      <point x="1411.2791666666667" y="268.0" />
+      <point x="1807.3625" y="268.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.service.impl.OrderServiceImpl" target="top.parak.gulimall.order.feign.ProductFeignService">
+      <point x="74.59999999999991" y="-188.0" />
+      <point x="1336.6791666666663" y="258.0" />
+      <point x="1523.8625" y="258.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.web.OrderWebController" target="top.parak.gulimall.order.service.OrderService">
+      <point x="0.0" y="-50.0" />
+      <point x="207.5" y="268.0" />
+      <point x="443.0291666666667" y="268.0" />
+      <point x="-124.33333333333331" y="119.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.service.impl.OrderServiceImpl" target="top.parak.gulimall.order.service.OrderService">
+      <point x="-149.20000000000005" y="-188.0" />
+      <point x="1112.8791666666666" y="268.0" />
+      <point x="691.6958333333333" y="268.0" />
+      <point x="124.33333333333337" y="119.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.service.impl.OrderServiceImpl" target="top.parak.gulimall.order.feign.WareFeignService">
+      <point x="0.0" y="-188.0" />
+      <point x="1262.0791666666664" y="268.0" />
+      <point x="1272.3625" y="268.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.listener.OrderCloseListener" target="top.parak.gulimall.order.service.OrderService">
+      <point x="0.0" y="-27.0" />
+      <point x="606.9999999999999" y="268.0" />
+      <point x="567.3625" y="268.0" />
+      <point x="0.0" y="119.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="977.111111111111" y="409.2777777777777" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

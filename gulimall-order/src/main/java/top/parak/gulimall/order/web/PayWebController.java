@@ -12,6 +12,8 @@ import top.parak.gulimall.order.pay.PayVo;
 import top.parak.gulimall.order.service.OrderService;
 
 /**
+ * 支付web控制器
+ *
  * @author KHighness
  * @since 2022-01-19
  * @email parakovo@gmail.com

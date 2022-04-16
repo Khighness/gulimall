@@ -11,6 +11,8 @@ import top.parak.gulimall.seckill.to.SeckillSkuRedisTo;
 import java.util.List;
 
 /**
+ * 秒杀控制器
+ *
  * @author KHighness
  * @since 2022-01-22
  * @email parakovo@gmail.com

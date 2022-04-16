@@ -39,6 +39,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
+ * 秒杀实现
+ *
  * @author KHighness
  * @since 2022-01-21
  * @email parakovo@gmail.com

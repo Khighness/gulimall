@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>top.parak.gulimall.order.web.PayWebController</OriginalElement>
+  <nodes>
+    <node x="67.73809523809524" y="392.0">top.parak.gulimall.order.web.PayWebController</node>
+    <node x="172.0" y="104.0">top.parak.gulimall.order.service.OrderService</node>
+    <node x="279.75" y="392.0">top.parak.gulimall.order.listener.OrderCloseListener</node>
+    <node x="381.75" y="0.0">top.parak.gulimall.order.pay.PayAsyncVo</node>
+    <node x="0.0" y="196.0">top.parak.gulimall.order.pay.AlipayTemplate</node>
+    <node x="118.23809523809524" y="1.0">top.parak.gulimall.order.pay.PayVo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="top.parak.gulimall.order.web.PayWebController" target="top.parak.gulimall.order.service.OrderService">
+      <point x="61.33333333333337" y="-27.0" />
+      <point x="221.0714285714286" y="367.0" />
+      <point x="265.25" y="367.0" />
+      <point x="-93.25" y="119.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.pay.AlipayTemplate" target="top.parak.gulimall.order.pay.PayVo">
+      <point x="0.0" y="-27.0" />
+      <point x="75.5" y="79.0" />
+      <point x="132.0714285714286" y="79.0" />
+      <point x="-27.66666666666663" y="26.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.service.OrderService" target="top.parak.gulimall.order.pay.PayVo">
+      <point x="-93.25" y="-119.0" />
+      <point x="265.25" y="79.0" />
+      <point x="187.40476190476187" y="79.0" />
+      <point x="27.66666666666663" y="26.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.service.OrderService" target="top.parak.gulimall.order.pay.PayAsyncVo">
+      <point x="93.25" y="-119.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.web.PayWebController" target="top.parak.gulimall.order.pay.AlipayTemplate">
+      <point x="-61.33333333333337" y="-27.0" />
+      <point x="98.40476190476187" y="367.0" />
+      <point x="75.5" y="367.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.listener.OrderCloseListener" target="top.parak.gulimall.order.service.OrderService">
+      <point x="0.0" y="-27.0" />
+      <point x="93.25" y="119.0" />
+    </edge>
+    <edge source="top.parak.gulimall.order.web.PayWebController" target="top.parak.gulimall.order.pay.PayVo">
+      <point x="0.0" y="-27.0" />
+      <point x="159.73809523809524" y="367.0" />
+      <point x="161.5" y="367.0" />
+      <point x="161.5" y="79.0" />
+      <point x="159.73809523809524" y="79.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.2999999999999998" x="129.90109890109863" y="233.77289377289378" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
