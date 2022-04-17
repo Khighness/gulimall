@@ -408,7 +408,7 @@ public class MallSearchServiceImpl implements MallSearchService {
      * @param content 字符数组
      */
     private void writeDSLToFile(byte[] content) {
-        File file = new File(System.getProperty("user.dir") + "/gulimall-search/src/main/resources/json/" +
+        File file = new File(System.getProperty("user.dir") + "/gulimall-search/src/main/resources/json/data/" +
                 System.currentTimeMillis() + "-dsl.json");
         try {
             if (!file.exists()) {
