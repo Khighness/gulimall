@@ -11,6 +11,8 @@ import top.parak.gulimall.product.vo.SkuItemVo;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * 商品详情web控制器
+ *
  * @author KHighness
  * @since 2021-12-22
  * @email parakovo@gmail.com

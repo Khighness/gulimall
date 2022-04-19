@@ -11,6 +11,8 @@ import top.parak.gulimall.search.vo.SearchResult;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 商品检索控制器
+ *
  * @author KHighness
  * @since 2021-12-13
  * @email parakovo@gmail.com

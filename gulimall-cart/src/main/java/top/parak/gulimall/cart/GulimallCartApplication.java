@@ -10,6 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
+ * 购物车服务启动器
+ *
  * @author KHighness
  * @since 2022-01-02
  * @email parakovo@gmail.com

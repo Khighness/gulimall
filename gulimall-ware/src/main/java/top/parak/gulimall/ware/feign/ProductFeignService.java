@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import top.parak.gulimall.common.utils.R;
 
 /**
+ * 远程调用订单服务
+ *
  * @author KHighness
  * @since 2021-10-28
  * @email parakovo@gmial.com

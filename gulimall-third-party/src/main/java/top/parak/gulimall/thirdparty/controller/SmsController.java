@@ -9,6 +9,8 @@ import top.parak.gulimall.common.utils.R;
 import top.parak.gulimall.thirdparty.component.SmsComponent;
 
 /**
+ * Sms控制器
+ *
  * @author KHighness
  * @since 2021-12-28
  * @email parakovo@gmail.com

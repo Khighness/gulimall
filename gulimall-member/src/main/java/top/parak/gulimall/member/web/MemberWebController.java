@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 会员web控制器
+ *
  * @author KHighness
  * @since 2022-01-19
  * @email parakovo@gmail.com
@@ -24,6 +26,10 @@ public class MemberWebController {
     @Autowired
     private OrderFeignService orderFeignService;
 
+    /**
+     * 我的订单页面
+     * <p>支付同步通知回调</p>
+     */
     @GetMapping("/memberOrder.html")
     public String memgerOrderPage(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                   Model model) {

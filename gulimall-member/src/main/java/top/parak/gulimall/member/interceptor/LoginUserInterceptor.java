@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * 登录拦截器
+ *
  * @author KHighness
  * @since 2022-01-19
  * @email parakovo@gmail.com

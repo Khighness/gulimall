@@ -9,6 +9,8 @@ import top.parak.gulimall.common.utils.R;
 import java.util.List;
 
 /**
+ * 远程调用商品服务
+ *
  * @author KHighness
  * @since 2021-12-17
  * @email parakovo@gmail.com

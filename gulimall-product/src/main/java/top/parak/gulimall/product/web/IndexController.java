@@ -19,6 +19,8 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 商城首页web控制器
+ *
  * @author KHighness
  * @since 2021-12-09
  * @email parakovo@gmail.com

@@ -19,6 +19,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * Oss控制器
+ *
  * @author KHighness
  * @since 2021-10-12
  * @email parakovo@gmail.com

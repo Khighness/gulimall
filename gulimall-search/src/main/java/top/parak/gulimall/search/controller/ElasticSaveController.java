@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * ES写入信息控制器
+ *
  * @author KHighness
  * @since 2021-11-10
  * @email parakovo@gmail.com

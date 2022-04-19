@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import top.parak.gulimall.common.utils.R;
 
 /**
+ * 远程调用订单服务
+ *
  * @author KHighness
  * @since 2022-01-17
  * @email parakovo@gmail.com

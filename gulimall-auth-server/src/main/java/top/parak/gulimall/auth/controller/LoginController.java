@@ -29,6 +29,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 注册登录
+ *
  * @author KHighness
  * @since 2021-12-26
  * @email parakovo@gmail.com

@@ -11,6 +11,8 @@ import top.parak.gulimall.common.oauth.YuqueOauthToken;
 import top.parak.gulimall.common.utils.R;
 
 /**
+ * 远程调用会员服务
+ *
  * @author KHighness
  * @since 2021-12-29
  * @email parakovo@gmail.com
