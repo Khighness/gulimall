@@ -202,7 +202,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         sourceBuilder.aggregation(nestedAggregationBuilder);
 
         log.info("【搜索引擎】 构建DSL: {}", sourceBuilder.toString());
-        writeDSLToFile(sourceBuilder.toString().getBytes(StandardCharsets.UTF_8));
+        // writeDSLToFile(sourceBuilder.toString().getBytes(StandardCharsets.UTF_8));
 
         return new SearchRequest(new String[]{ EsConstant.PRODUCT_INDEX }, sourceBuilder);
     }

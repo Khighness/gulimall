@@ -93,8 +93,8 @@ gulimall:
     timeout: 15m
 
 # Actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        exclude: *
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        exclude: *
