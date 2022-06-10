@@ -4,14 +4,6 @@
 
 
 
-### 后台架构
-
-
-<p align="center">
-<img src="assets/doc-img/gulimall-architecture.png" alt="gulimall-architecture" />
-</p>
-
-
 ### 项目模块
 
 ```
@@ -33,6 +25,14 @@ gulimall
     └───gulimall-seckill      ⚔️ 秒杀服务
 ```
 
+
+
+### 后台架构
+
+
+<p align="center">
+<img src="assets/doc-img/gulimall-architecture.png" alt="gulimall-architecture" />
+</p>
 
 
 ### 服务提供
